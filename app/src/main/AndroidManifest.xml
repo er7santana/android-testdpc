@@ -16,7 +16,7 @@
 -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.afwsamples.testdpc">
+          package="com.daimler.testdpc">
 
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
@@ -38,10 +38,11 @@
             android:icon="@drawable/ic_launcher"
             android:banner="@drawable/ic_launcher"
             android:theme="@style/AppTheme"
+            android:testOnly="true"
             android:label="@string/app_name">
 
       <activity
-            android:name=".PolicyManagementActivity"
+            android:name="com.daimler.testdpc.PolicyManagementActivity"
             android:label="@string/app_name"
             android:exported="true"
             android:windowSoftInputMode="adjustPan">
@@ -60,29 +61,19 @@
       </activity>
 
         <activity
-                android:name=".SetupManagementActivity"
+                android:name="com.daimler.testdpc.SetupManagementActivity"
                 android:theme="@style/SuwThemeGlifV3.Light"
                 android:label="@string/setup_app_name"
                 android:taskAffinity="">
         </activity>
 
-        <activity-alias
-                android:name=".SetupManagementLaunchActivity"
-                android:targetActivity=".SetupManagementActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-                <category android:name="android.intent.category.INFO"/>
-            </intent-filter>
-        </activity-alias>
-
         <activity
-                android:name=".AddAccountActivity"
+                android:name="com.daimler.testdpc.AddAccountActivity"
                 android:label="@string/app_name"
                 android:theme="@style/SuwThemeGlifV3.Light"/>
 
         <activity
-                android:name=".FinalizeActivity"
+                android:name="com.daimler.testdpc.FinalizeActivity"
                 android:label="@string/app_name"
                 android:theme="@style/SuwThemeGlifV3.Light"
                 android:permission="android.permission.BIND_DEVICE_ADMIN">
@@ -93,12 +84,12 @@
         </activity>
 
         <activity
-                android:name=".cosu.EnableCosuActivity"
+                android:name="com.daimler.testdpc.cosu.EnableCosuActivity"
                 android:label="@string/app_name"
                 android:theme="@style/SuwThemeGlifV3.Light"/>
 
         <activity
-                android:name=".policy.locktask.KioskModeActivity"
+                android:name="com.daimler.testdpc.policy.locktask.KioskModeActivity"
                 android:label="@string/kiosk_mode"
                 android:launchMode="singleInstance"
                 android:enabled="false">
@@ -109,7 +100,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".provision.DpcLoginActivity"
+        <activity android:name="com.daimler.testdpc.provision.DpcLoginActivity"
                 android:exported="true"
                 android:permission="android.permission.BIND_DEVICE_ADMIN"
                 android:theme="@style/DpcLoginTheme">
@@ -120,7 +111,7 @@
         </activity>
 
         <activity
-                android:name=".provision.ProvisioningSuccessActivity"
+                android:name="com.daimler.testdpc.provision.ProvisioningSuccessActivity"
                 android:theme="@android:style/Theme.NoDisplay">
             <intent-filter>
                 <action android:name="android.app.action.PROVISIONING_SUCCESSFUL"/>
@@ -129,7 +120,7 @@
         </activity>
 
         <receiver
-                android:name=".DeviceAdminReceiver"
+                android:name="com.daimler.testdpc.DeviceAdminReceiver"
                 android:description="@string/app_name"
                 android:label="@string/app_name"
                 android:permission="android.permission.BIND_DEVICE_ADMIN">
@@ -146,7 +137,7 @@
         </receiver>
 
         <receiver
-                android:name=".DelegatedAdminReceiver"
+                android:name="com.daimler.testdpc.DelegatedAdminReceiver"
                 android:permission="android.permission.BIND_DEVICE_ADMIN">
             <intent-filter>
                 <action android:name="android.app.action.CHOOSE_PRIVATE_KEY_ALIAS"/>
@@ -154,14 +145,14 @@
             </intent-filter>
         </receiver>
 
-        <receiver android:name=".BootReceiver"
+        <receiver android:name="com.daimler.testdpc.BootReceiver"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
             </intent-filter>
         </receiver>
 
-        <receiver android:name=".policy.resetpassword.ResetPasswordService$LockedBootCompletedReceiver"
+        <receiver android:name="com.daimler.testdpc.policy.resetpassword.ResetPasswordService$LockedBootCompletedReceiver"
                 android:enabled="@bool/is_o_or_later"
                 android:directBootAware="true" >
             <intent-filter>
@@ -169,13 +160,13 @@
             </intent-filter>
         </receiver>
 
-        <service android:name=".policy.resetpassword.ResetPasswordService"
+        <service android:name="com.daimler.testdpc.policy.resetpassword.ResetPasswordService"
                 android:enabled="@bool/is_o_or_later"
                 android:directBootAware="true" >
         </service>
 
         <provider
-                android:authorities="com.afwsamples.testdpc.fileprovider"
+                android:authorities="com.daimler.testdpc.fileprovider"
                 android:name="androidx.core.content.FileProvider"
                 android:grantUriPermissions="true"
                 android:exported="false">
@@ -184,24 +175,24 @@
                     android:resource="@xml/filepaths" />
         </provider>
 
-        <service android:name=".profilepolicy.apprestrictions.AppRestrictionsProxy">
+        <service android:name="com.daimler.testdpc.profilepolicy.apprestrictions.AppRestrictionsProxy">
             <intent-filter>
                 <action android:name="com.android.vending.dpc.APPLICATION_RESTRICTIONS_PROXY" />
             </intent-filter>
         </service>
 
         <service
-                android:name=".comp.ProfileOwnerService"
+                android:name="com.daimler.testdpc.comp.ProfileOwnerService"
                 android:exported="true"
                 android:permission="android.permission.BIND_DEVICE_ADMIN"/>
 
         <service
-                android:name=".comp.DeviceOwnerService"
+                android:name="com.daimler.testdpc.comp.DeviceOwnerService"
                 android:exported="true"
                 android:permission="android.permission.BIND_DEVICE_ADMIN"/>
 
         <service
-                android:name=".DeviceAdminService"
+                android:name="com.daimler.testdpc.DeviceAdminService"
                 android:enabled="@bool/is_o_or_later"
                 android:exported="true"
                 android:permission="android.permission.BIND_DEVICE_ADMIN">
@@ -210,7 +201,7 @@
             </intent-filter>
         </service>
 
-        <service android:name=".feedback.AppStatesService">
+        <service android:name="com.daimler.testdpc.feedback.AppStatesService">
           <intent-filter>
             <action android:name="androidx.enterprise.feedback.action.APP_STATES" />
           </intent-filter>

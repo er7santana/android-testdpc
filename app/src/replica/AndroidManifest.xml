@@ -18,7 +18,7 @@
     <application>
         <provider xmlns:tools="http://schemas.android.com/tools"
             tools:replace="android:authorities"
-            android:authorities="com.afwsamples.testdpc.replica.fileprovider"
+            android:authorities="com.daimler.testdpc.replica.fileprovider"
             android:name="androidx.core.content.FileProvider"
             android:grantUriPermissions="true"
             android:exported="false">
