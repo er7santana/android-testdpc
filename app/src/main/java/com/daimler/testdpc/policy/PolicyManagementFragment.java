@@ -534,235 +534,354 @@ public class PolicyManagementFragment extends BaseSearchablePolicyPreferenceFrag
                 (EditTextPreference) findPreference(OVERRIDE_KEY_SELECTION_KEY);
         overrideKeySelectionPreference.setOnPreferenceChangeListener(this);
         overrideKeySelectionPreference.setSummary(overrideKeySelectionPreference.getText());
+
         mManageLockTaskListPreference = (DpcPreference) findPreference(MANAGE_LOCK_TASK_LIST_KEY);
-        mManageLockTaskListPreference.setOnPreferenceClickListener(this);
-        mManageLockTaskListPreference.setCustomConstraint(this::validateAffiliatedUserAfterP);
-        findPreference(CHECK_LOCK_TASK_PERMITTED_KEY).setOnPreferenceClickListener(this);
+        if (mManageLockTaskListPreference != null) {
+            mManageLockTaskListPreference.setOnPreferenceClickListener(this);
+            mManageLockTaskListPreference.setCustomConstraint(this::validateAffiliatedUserAfterP);
+        }
+
+        setOnPreferenceClickListener(CHECK_LOCK_TASK_PERMITTED_KEY);
+
         mSetLockTaskFeaturesPreference = (DpcPreference) findPreference(SET_LOCK_TASK_FEATURES_KEY);
-        mSetLockTaskFeaturesPreference.setOnPreferenceClickListener(this);
-        mSetLockTaskFeaturesPreference.setCustomConstraint(this::validateAffiliatedUserAfterP);
-        findPreference(START_LOCK_TASK).setOnPreferenceClickListener(this);
-        findPreference(RELAUNCH_IN_LOCK_TASK).setOnPreferenceClickListener(this);
-        findPreference(STOP_LOCK_TASK).setOnPreferenceClickListener(this);
-        findPreference(CREATE_MANAGED_PROFILE_KEY).setOnPreferenceClickListener(this);
-        findPreference(CREATE_AND_MANAGE_USER_KEY).setOnPreferenceClickListener(this);
-        findPreference(REMOVE_USER_KEY).setOnPreferenceClickListener(this);
-        findPreference(SWITCH_USER_KEY).setOnPreferenceClickListener(this);
-        findPreference(START_USER_IN_BACKGROUND_KEY).setOnPreferenceClickListener(this);
-        findPreference(STOP_USER_KEY).setOnPreferenceClickListener(this);
+        if (mSetLockTaskFeaturesPreference != null) {
+            mSetLockTaskFeaturesPreference.setOnPreferenceClickListener(this);
+            mSetLockTaskFeaturesPreference.setCustomConstraint(this::validateAffiliatedUserAfterP);
+        }
+
+        setOnPreferenceClickListener(START_LOCK_TASK);
+        setOnPreferenceClickListener(RELAUNCH_IN_LOCK_TASK);
+        setOnPreferenceClickListener(STOP_LOCK_TASK);
+        setOnPreferenceClickListener(CREATE_MANAGED_PROFILE_KEY);
+        setOnPreferenceClickListener(CREATE_AND_MANAGE_USER_KEY);
+        setOnPreferenceClickListener(REMOVE_USER_KEY);
+        setOnPreferenceClickListener(SWITCH_USER_KEY);
+        setOnPreferenceClickListener(START_USER_IN_BACKGROUND_KEY);
+        setOnPreferenceClickListener(STOP_USER_KEY);
+
         mEnableLogoutPreference = (DpcSwitchPreference) findPreference(ENABLE_LOGOUT_KEY);
-        mEnableLogoutPreference.setOnPreferenceChangeListener(this);
-        findPreference(SET_USER_SESSION_MESSAGE_KEY).setOnPreferenceClickListener(this);
+        if (mEnableLogoutPreference != null) {
+            mEnableLogoutPreference.setOnPreferenceChangeListener(this);
+        }
+
+        setOnPreferenceClickListener(SET_USER_SESSION_MESSAGE_KEY);
+
         mLogoutUserPreference = (DpcPreference) findPreference(LOGOUT_USER_KEY);
-        mLogoutUserPreference.setOnPreferenceClickListener(this);
-        mLogoutUserPreference.setCustomConstraint(this::validateAffiliatedUserAfterP);
-        findPreference(SET_AFFILIATION_IDS_KEY).setOnPreferenceClickListener(this);
+        if (mLogoutUserPreference != null) {
+            mLogoutUserPreference.setOnPreferenceClickListener(this);
+            mLogoutUserPreference.setCustomConstraint(this::validateAffiliatedUserAfterP);
+        }
+
+        setOnPreferenceClickListener(SET_AFFILIATION_IDS_KEY);
+
         mAffiliatedUserPreference = findPreference(AFFILIATED_USER_KEY);
         mEphemeralUserPreference = findPreference(EPHEMERAL_USER_KEY);
+
         mDisableCameraSwitchPreference = (SwitchPreference) findPreference(DISABLE_CAMERA_KEY);
-        mDisableCameraSwitchPreference.setOnPreferenceChangeListener(this);
+        if (mDisableCameraSwitchPreference != null) {
+            mDisableCameraSwitchPreference.setOnPreferenceChangeListener(this);
+        }
+
         mDisableCameraOnParentSwitchPreference = (DpcSwitchPreference)
                 findPreference(DISABLE_CAMERA_ON_PARENT_KEY);
-        mDisableCameraOnParentSwitchPreference.setOnPreferenceChangeListener(this);
-        findPreference(CAPTURE_IMAGE_KEY).setOnPreferenceClickListener(this);
-        findPreference(CAPTURE_VIDEO_KEY).setOnPreferenceClickListener(this);
+        if (mDisableCameraOnParentSwitchPreference != null) {
+            mDisableCameraOnParentSwitchPreference.setOnPreferenceChangeListener(this);
+        }
+
+        setOnPreferenceClickListener(CAPTURE_IMAGE_KEY);
+        setOnPreferenceClickListener(CAPTURE_VIDEO_KEY);
+
         mDisableScreenCaptureSwitchPreference = (SwitchPreference) findPreference(
                 DISABLE_SCREEN_CAPTURE_KEY);
-        mDisableScreenCaptureSwitchPreference.setOnPreferenceChangeListener(this);
+        if (mDisableScreenCaptureSwitchPreference != null) {
+            mDisableScreenCaptureSwitchPreference.setOnPreferenceChangeListener(this);
+        }
+
         mDisableScreenCaptureOnParentSwitchPreference = (DpcSwitchPreference) findPreference(
                 DISABLE_SCREEN_CAPTURE_ON_PARENT_KEY);
-        mDisableScreenCaptureOnParentSwitchPreference.setOnPreferenceChangeListener(this);
+        if (mDisableScreenCaptureOnParentSwitchPreference != null) {
+            mDisableScreenCaptureOnParentSwitchPreference.setOnPreferenceChangeListener(this);
+        }
+
         mMuteAudioSwitchPreference = (SwitchPreference) findPreference(
                 MUTE_AUDIO_KEY);
-        mMuteAudioSwitchPreference.setOnPreferenceChangeListener(this);
-        findPreference(LOCK_SCREEN_POLICY_KEY).setOnPreferenceClickListener(this);
-        findPreference(PASSWORD_CONSTRAINTS_KEY).setOnPreferenceClickListener(this);
-        findPreference(RESET_PASSWORD_KEY).setOnPreferenceClickListener(this);
-        findPreference(LOCK_NOW_KEY).setOnPreferenceClickListener(this);
-        findPreference(SYSTEM_UPDATE_POLICY_KEY).setOnPreferenceClickListener(this);
-        findPreference(SYSTEM_UPDATE_PENDING_KEY).setOnPreferenceClickListener(this);
-        findPreference(SET_ALWAYS_ON_VPN_KEY).setOnPreferenceClickListener(this);
-        findPreference(SET_GLOBAL_HTTP_PROXY_KEY).setOnPreferenceClickListener(this);
-        findPreference(CLEAR_GLOBAL_HTTP_PROXY_KEY).setOnPreferenceClickListener(this);
-        findPreference(SET_PRIVATE_DNS_MODE_KEY).setOnPreferenceClickListener(this);
-        findPreference(NETWORK_STATS_KEY).setOnPreferenceClickListener(this);
-        findPreference(DELEGATED_CERT_INSTALLER_KEY).setOnPreferenceClickListener(this);
+        if (mMuteAudioSwitchPreference != null) {
+            mMuteAudioSwitchPreference.setOnPreferenceChangeListener(this);
+        }
+
+        setOnPreferenceClickListener(LOCK_SCREEN_POLICY_KEY);
+        setOnPreferenceClickListener(PASSWORD_CONSTRAINTS_KEY);
+        setOnPreferenceClickListener(RESET_PASSWORD_KEY);
+        setOnPreferenceClickListener(LOCK_NOW_KEY);
+        setOnPreferenceClickListener(SYSTEM_UPDATE_POLICY_KEY);
+        setOnPreferenceClickListener(SYSTEM_UPDATE_PENDING_KEY);
+        setOnPreferenceClickListener(SET_ALWAYS_ON_VPN_KEY);
+        setOnPreferenceClickListener(SET_GLOBAL_HTTP_PROXY_KEY);
+        setOnPreferenceClickListener(CLEAR_GLOBAL_HTTP_PROXY_KEY);
+        setOnPreferenceClickListener(SET_PRIVATE_DNS_MODE_KEY);
+        setOnPreferenceClickListener(NETWORK_STATS_KEY);
+        setOnPreferenceClickListener(DELEGATED_CERT_INSTALLER_KEY);
+
         mDisableStatusBarPreference = (DpcPreference) findPreference(DISABLE_STATUS_BAR);
-        mDisableStatusBarPreference.setOnPreferenceClickListener(this);
-        mDisableStatusBarPreference.setCustomConstraint(this::validateAffiliatedUserAfterP);
-        mDisableStatusBarPreference.addCustomConstraint(this::validateDeviceOwnerBeforeP);
+        if (mDisableStatusBarPreference != null) {
+            mDisableStatusBarPreference.setOnPreferenceClickListener(this);
+            mDisableStatusBarPreference.setCustomConstraint(this::validateAffiliatedUserAfterP);
+            mDisableStatusBarPreference.addCustomConstraint(this::validateDeviceOwnerBeforeP);
+        }
+
         mReenableStatusBarPreference = (DpcPreference) findPreference(REENABLE_STATUS_BAR);
-        mReenableStatusBarPreference.setOnPreferenceClickListener(this);
-        mReenableStatusBarPreference.setCustomConstraint(this::validateAffiliatedUserAfterP);
-        mReenableStatusBarPreference.addCustomConstraint(this::validateDeviceOwnerBeforeP);
+        if (mReenableStatusBarPreference != null) {
+            mReenableStatusBarPreference.setOnPreferenceClickListener(this);
+            mReenableStatusBarPreference.setCustomConstraint(this::validateAffiliatedUserAfterP);
+            mReenableStatusBarPreference.addCustomConstraint(this::validateDeviceOwnerBeforeP);
+        }
+
         mDisableKeyguardPreference = (DpcPreference) findPreference(DISABLE_KEYGUARD);
-        mDisableKeyguardPreference.setOnPreferenceClickListener(this);
-        mDisableKeyguardPreference.setCustomConstraint(this::validateAffiliatedUserAfterP);
-        mDisableKeyguardPreference.addCustomConstraint(this::validateDeviceOwnerBeforeP);
+        if (mDisableKeyguardPreference != null) {
+            mDisableKeyguardPreference.setOnPreferenceClickListener(this);
+            mDisableKeyguardPreference.setCustomConstraint(this::validateAffiliatedUserAfterP);
+            mDisableKeyguardPreference.addCustomConstraint(this::validateDeviceOwnerBeforeP);
+        }
+
         mReenableKeyguardPreference = (DpcPreference) findPreference(REENABLE_KEYGUARD);
-        mReenableKeyguardPreference.setOnPreferenceClickListener(this);
-        mReenableKeyguardPreference.setCustomConstraint(this::validateAffiliatedUserAfterP);
-        mReenableKeyguardPreference.addCustomConstraint(this::validateDeviceOwnerBeforeP);
-        findPreference(START_KIOSK_MODE).setOnPreferenceClickListener(this);
+        if (mReenableKeyguardPreference != null) {
+            mReenableKeyguardPreference.setOnPreferenceClickListener(this);
+            mReenableKeyguardPreference.setCustomConstraint(this::validateAffiliatedUserAfterP);
+            mReenableKeyguardPreference.addCustomConstraint(this::validateDeviceOwnerBeforeP);
+        }
+
+        setOnPreferenceClickListener(START_KIOSK_MODE);
+
         mStayOnWhilePluggedInSwitchPreference = (SwitchPreference) findPreference(
                 STAY_ON_WHILE_PLUGGED_IN);
-        mStayOnWhilePluggedInSwitchPreference.setOnPreferenceChangeListener(this);
-        findPreference(WIPE_DATA_KEY).setOnPreferenceClickListener(this);
-        findPreference(REMOVE_DEVICE_OWNER_KEY).setOnPreferenceClickListener(this);
+        if (mStayOnWhilePluggedInSwitchPreference != null) {
+            mStayOnWhilePluggedInSwitchPreference.setOnPreferenceChangeListener(this);
+        }
+
+        setOnPreferenceClickListener(WIPE_DATA_KEY);
+        setOnPreferenceClickListener(REMOVE_DEVICE_OWNER_KEY);
+
         mEnableBackupServicePreference = (DpcSwitchPreference) findPreference(
             ENABLE_BACKUP_SERVICE);
-        mEnableBackupServicePreference.setOnPreferenceChangeListener(this);
-        mEnableBackupServicePreference.setCustomConstraint(this::validateDeviceOwnerBeforeQ);
+        if (mEnableBackupServicePreference != null) {
+            mEnableBackupServicePreference.setOnPreferenceChangeListener(this);
+            mEnableBackupServicePreference.setCustomConstraint(this::validateDeviceOwnerBeforeQ);
+        }
+
         mCommonCriteriaModePreference = (DpcSwitchPreference) findPreference(
             COMMON_CRITERIA_MODE_KEY);
-        mCommonCriteriaModePreference.setOnPreferenceChangeListener(this);
-        findPreference(REQUEST_BUGREPORT_KEY).setOnPreferenceClickListener(this);
-        mEnableSecurityLoggingPreference =
-            (SwitchPreference) findPreference(ENABLE_SECURITY_LOGGING);
-        mEnableSecurityLoggingPreference.setOnPreferenceChangeListener(this);
-        mRequestSecurityLogsPreference = (DpcPreference) findPreference(REQUEST_SECURITY_LOGS);
-        mRequestSecurityLogsPreference.setOnPreferenceClickListener(this);
+        if (mCommonCriteriaModePreference != null) {
+            mCommonCriteriaModePreference.setOnPreferenceChangeListener(this);
+        }
+
+        setOnPreferenceClickListener(REQUEST_BUGREPORT_KEY);
+
+        mEnableSecurityLoggingPreference = (SwitchPreference) findPreference(ENABLE_SECURITY_LOGGING);
+        if (mEnableSecurityLoggingPreference != null) {
+            mEnableSecurityLoggingPreference.setOnPreferenceChangeListener(this);
+        }
+
         final CustomConstraint securityLoggingChecker = () -> isSecurityLoggingEnabled()
                 ? NO_CUSTOM_CONSTRIANT
                 : R.string.requires_security_logs;
-        mRequestSecurityLogsPreference.setCustomConstraint(securityLoggingChecker);
+
+        mRequestSecurityLogsPreference = (DpcPreference) findPreference(REQUEST_SECURITY_LOGS);
+        if (mRequestSecurityLogsPreference != null) {
+            mRequestSecurityLogsPreference.setOnPreferenceClickListener(this);
+            mRequestSecurityLogsPreference.setCustomConstraint(securityLoggingChecker);
+        }
+
         mRequestPreRebootSecurityLogsPreference =
                 (DpcPreference) findPreference(REQUEST_PRE_REBOOT_SECURITY_LOGS);
-        mRequestPreRebootSecurityLogsPreference.setOnPreferenceClickListener(this);
-        mRequestPreRebootSecurityLogsPreference.setCustomConstraint(securityLoggingChecker);
+        if (mRequestPreRebootSecurityLogsPreference != null) {
+            mRequestPreRebootSecurityLogsPreference.setOnPreferenceClickListener(this);
+            mRequestPreRebootSecurityLogsPreference.setCustomConstraint(securityLoggingChecker);
+        }
+
         mEnableNetworkLoggingPreference = (SwitchPreference) findPreference(ENABLE_NETWORK_LOGGING);
-        mEnableNetworkLoggingPreference.setOnPreferenceChangeListener(this);
+        if (mEnableNetworkLoggingPreference != null) {
+            mEnableNetworkLoggingPreference.setOnPreferenceChangeListener(this);
+        }
+
         mRequestNetworkLogsPreference = (DpcPreference) findPreference(REQUEST_NETWORK_LOGS);
-        mRequestNetworkLogsPreference.setOnPreferenceClickListener(this);
-        mRequestNetworkLogsPreference.setCustomConstraint(
-            () -> isNetworkLoggingEnabled()
-                ? NO_CUSTOM_CONSTRIANT
-                : R.string.requires_network_logs);
-        findPreference(SET_ACCESSIBILITY_SERVICES_KEY).setOnPreferenceClickListener(this);
-        findPreference(SET_INPUT_METHODS_KEY).setOnPreferenceClickListener(this);
-        findPreference(SET_NOTIFICATION_LISTENERS_KEY).setOnPreferenceClickListener(this);
-        findPreference(SET_NOTIFICATION_LISTENERS_TEXT_KEY).setOnPreferenceClickListener(this);
-        findPreference(SET_DISABLE_ACCOUNT_MANAGEMENT_KEY).setOnPreferenceClickListener(this);
-        findPreference(GET_DISABLE_ACCOUNT_MANAGEMENT_KEY).setOnPreferenceClickListener(this);
-        findPreference(ADD_ACCOUNT_KEY).setOnPreferenceClickListener(this);
-        findPreference(REMOVE_ACCOUNT_KEY).setOnPreferenceClickListener(this);
-        findPreference(BLOCK_UNINSTALLATION_BY_PKG_KEY).setOnPreferenceClickListener(this);
-        findPreference(BLOCK_UNINSTALLATION_LIST_KEY).setOnPreferenceClickListener(this);
-        findPreference(APP_FEEDBACK_NOTIFICATIONS).setOnPreferenceChangeListener(this);
+        if (mRequestNetworkLogsPreference != null) {
+            mRequestNetworkLogsPreference.setOnPreferenceClickListener(this);
+            mRequestNetworkLogsPreference.setCustomConstraint(
+                    () -> isNetworkLoggingEnabled()
+                            ? NO_CUSTOM_CONSTRIANT
+                            : R.string.requires_network_logs);
+        }
+
+        setOnPreferenceClickListener(SET_ACCESSIBILITY_SERVICES_KEY);
+        setOnPreferenceClickListener(SET_INPUT_METHODS_KEY);
+        setOnPreferenceClickListener(SET_NOTIFICATION_LISTENERS_KEY);
+        setOnPreferenceClickListener(SET_NOTIFICATION_LISTENERS_TEXT_KEY);
+        setOnPreferenceClickListener(SET_DISABLE_ACCOUNT_MANAGEMENT_KEY);
+        setOnPreferenceClickListener(GET_DISABLE_ACCOUNT_MANAGEMENT_KEY);
+        setOnPreferenceClickListener(ADD_ACCOUNT_KEY);
+        setOnPreferenceClickListener(REMOVE_ACCOUNT_KEY);
+        setOnPreferenceClickListener(BLOCK_UNINSTALLATION_BY_PKG_KEY);
+        setOnPreferenceClickListener(BLOCK_UNINSTALLATION_LIST_KEY);
+        setOnPreferenceClickListener(APP_FEEDBACK_NOTIFICATIONS);
+
         mEnableAppFeedbackNotificationsPreference =
             (DpcSwitchPreference) findPreference(APP_FEEDBACK_NOTIFICATIONS);
-        findPreference(ENABLE_SYSTEM_APPS_KEY).setOnPreferenceClickListener(this);
-        findPreference(ENABLE_SYSTEM_APPS_BY_PACKAGE_NAME_KEY).setOnPreferenceClickListener(this);
-        findPreference(ENABLE_SYSTEM_APPS_BY_INTENT_KEY).setOnPreferenceClickListener(this);
+
+        setOnPreferenceClickListener(ENABLE_SYSTEM_APPS_KEY);
+        setOnPreferenceClickListener(ENABLE_SYSTEM_APPS_BY_PACKAGE_NAME_KEY);
+        setOnPreferenceClickListener(ENABLE_SYSTEM_APPS_BY_INTENT_KEY);
+
         mInstallExistingPackagePreference =
                 (DpcPreference) findPreference(INSTALL_EXISTING_PACKAGE_KEY);
-        mInstallExistingPackagePreference.setOnPreferenceClickListener(this);
-        mInstallExistingPackagePreference.setCustomConstraint(this::validateAffiliatedUserAfterP);
-        findPreference(INSTALL_APK_PACKAGE_KEY).setOnPreferenceClickListener(this);
-        findPreference(UNINSTALL_PACKAGE_KEY).setOnPreferenceClickListener(this);
-        findPreference(HIDE_APPS_KEY).setOnPreferenceClickListener(this);
+        if (mInstallExistingPackagePreference != null) {
+            mInstallExistingPackagePreference.setOnPreferenceClickListener(this);
+            mInstallExistingPackagePreference.setCustomConstraint(this::validateAffiliatedUserAfterP);
+        }
+
+        setOnPreferenceClickListener(INSTALL_APK_PACKAGE_KEY);
+        setOnPreferenceClickListener(UNINSTALL_PACKAGE_KEY);
+        setOnPreferenceClickListener(HIDE_APPS_KEY);
+
         mHideAppsParentPreference = (DpcPreference) findPreference(HIDE_APPS_PARENT_KEY);
-        mHideAppsParentPreference.setOnPreferenceClickListener(this);
-        findPreference(UNHIDE_APPS_KEY).setOnPreferenceClickListener(this);
+        if (mHideAppsParentPreference != null) {
+            mHideAppsParentPreference.setOnPreferenceClickListener(this);
+        }
+
+        setOnPreferenceClickListener(UNHIDE_APPS_KEY);
+
         mUnhideAppsParentPreference = (DpcPreference) findPreference(UNHIDE_APPS_PARENT_KEY);
-        mUnhideAppsParentPreference.setOnPreferenceClickListener(this);
-        findPreference(SUSPEND_APPS_KEY).setOnPreferenceClickListener(this);
-        findPreference(UNSUSPEND_APPS_KEY).setOnPreferenceClickListener(this);
-        findPreference(CLEAR_APP_DATA_KEY).setOnPreferenceClickListener(this);
-        findPreference(KEEP_UNINSTALLED_PACKAGES).setOnPreferenceClickListener(this);
-        findPreference(MANAGED_CONFIGURATIONS_KEY).setOnPreferenceClickListener(this);
-        findPreference(DISABLE_METERED_DATA_KEY).setOnPreferenceClickListener(this);
-        findPreference(GENERIC_DELEGATION_KEY).setOnPreferenceClickListener(this);
-        findPreference(APP_RESTRICTIONS_MANAGING_PACKAGE_KEY).setOnPreferenceClickListener(this);
-        findPreference(INSTALL_KEY_CERTIFICATE_KEY).setOnPreferenceClickListener(this);
-        findPreference(GENERATE_KEY_CERTIFICATE_KEY).setOnPreferenceClickListener(this);
-        findPreference(REMOVE_KEY_CERTIFICATE_KEY).setOnPreferenceClickListener(this);
-        findPreference(TEST_KEY_USABILITY_KEY).setOnPreferenceClickListener(this);
-        findPreference(INSTALL_CA_CERTIFICATE_KEY).setOnPreferenceClickListener(this);
-        findPreference(GET_CA_CERTIFICATES_KEY).setOnPreferenceClickListener(this);
-        findPreference(REMOVE_ALL_CERTIFICATES_KEY).setOnPreferenceClickListener(this);
-        findPreference(MANAGED_PROFILE_SPECIFIC_POLICIES_KEY).setOnPreferenceClickListener(this);
-        findPreference(SET_PERMISSION_POLICY_KEY).setOnPreferenceClickListener(this);
-        findPreference(MANAGE_APP_PERMISSIONS_KEY).setOnPreferenceClickListener(this);
-        findPreference(CREATE_WIFI_CONFIGURATION_KEY).setOnPreferenceClickListener(this);
-        findPreference(CREATE_EAP_TLS_WIFI_CONFIGURATION_KEY).setOnPreferenceClickListener(this);
+        if (mUnhideAppsParentPreference != null) {
+            mUnhideAppsParentPreference.setOnPreferenceClickListener(this);
+        }
+
+        setOnPreferenceClickListener(SUSPEND_APPS_KEY);
+        setOnPreferenceClickListener(UNSUSPEND_APPS_KEY);
+        setOnPreferenceClickListener(CLEAR_APP_DATA_KEY);
+        setOnPreferenceClickListener(KEEP_UNINSTALLED_PACKAGES);
+        setOnPreferenceClickListener(MANAGED_CONFIGURATIONS_KEY);
+        setOnPreferenceClickListener(DISABLE_METERED_DATA_KEY);
+        setOnPreferenceClickListener(GENERIC_DELEGATION_KEY);
+        setOnPreferenceClickListener(APP_RESTRICTIONS_MANAGING_PACKAGE_KEY);
+        setOnPreferenceClickListener(INSTALL_KEY_CERTIFICATE_KEY);
+        setOnPreferenceClickListener(GENERATE_KEY_CERTIFICATE_KEY);
+        setOnPreferenceClickListener(REMOVE_KEY_CERTIFICATE_KEY);
+        setOnPreferenceClickListener(TEST_KEY_USABILITY_KEY);
+        setOnPreferenceClickListener(INSTALL_CA_CERTIFICATE_KEY);
+        setOnPreferenceClickListener(GET_CA_CERTIFICATES_KEY);
+        setOnPreferenceClickListener(REMOVE_ALL_CERTIFICATES_KEY);
+        setOnPreferenceClickListener(MANAGED_PROFILE_SPECIFIC_POLICIES_KEY);
+        setOnPreferenceClickListener(SET_PERMISSION_POLICY_KEY);
+        setOnPreferenceClickListener(MANAGE_APP_PERMISSIONS_KEY);
+        setOnPreferenceClickListener(CREATE_WIFI_CONFIGURATION_KEY);
+        setOnPreferenceClickListener(CREATE_EAP_TLS_WIFI_CONFIGURATION_KEY);
+
         mLockdownAdminConfiguredNetworksPreference = (DpcSwitchPreference)
                 findPreference(WIFI_CONFIG_LOCKDOWN_ENABLE_KEY);
-        mLockdownAdminConfiguredNetworksPreference.setOnPreferenceChangeListener(this);
-        findPreference(MODIFY_WIFI_CONFIGURATION_KEY).setOnPreferenceClickListener(this);
-        findPreference(TRANSFER_OWNERSHIP_KEY).setOnPreferenceClickListener(this);
-        findPreference(SHOW_WIFI_MAC_ADDRESS_KEY).setOnPreferenceClickListener(this);
+        if (mLockdownAdminConfiguredNetworksPreference != null) {
+            mLockdownAdminConfiguredNetworksPreference.setOnPreferenceChangeListener(this);
+        }
+
+        setOnPreferenceClickListener(MODIFY_WIFI_CONFIGURATION_KEY);
+        setOnPreferenceClickListener(TRANSFER_OWNERSHIP_KEY);
+        setOnPreferenceClickListener(SHOW_WIFI_MAC_ADDRESS_KEY);
+
         mInstallNonMarketAppsPreference = (DpcSwitchPreference) findPreference(
                 INSTALL_NONMARKET_APPS_KEY);
-        mInstallNonMarketAppsPreference.setCustomConstraint(
-                () -> (mUserManager.hasUserRestriction(DISALLOW_INSTALL_UNKNOWN_SOURCES) ||
-                    mUserManager.hasUserRestriction(
-                        UserManager.DISALLOW_INSTALL_UNKNOWN_SOURCES_GLOBALLY))
-                        ? R.string.user_restricted
-                        : NO_CUSTOM_CONSTRIANT);
-        mInstallNonMarketAppsPreference.setOnPreferenceChangeListener(this);
-        findPreference(SET_USER_RESTRICTIONS_KEY).setOnPreferenceClickListener(this);
+        if (mInstallNonMarketAppsPreference != null) {
+            mInstallNonMarketAppsPreference.setCustomConstraint(
+                    () -> (mUserManager.hasUserRestriction(DISALLOW_INSTALL_UNKNOWN_SOURCES) ||
+                            mUserManager.hasUserRestriction(
+                                    UserManager.DISALLOW_INSTALL_UNKNOWN_SOURCES_GLOBALLY))
+                            ? R.string.user_restricted
+                            : NO_CUSTOM_CONSTRIANT);
+            mInstallNonMarketAppsPreference.setOnPreferenceChangeListener(this);
+        }
+
+        setOnPreferenceClickListener(SET_USER_RESTRICTIONS_KEY);
+
         mUserRestrictionsParentPreference = (DpcPreference) findPreference(SET_USER_RESTRICTIONS_PARENT_KEY);
-        mUserRestrictionsParentPreference.setOnPreferenceClickListener(this);
+        if (mUserRestrictionsParentPreference != null) {
+            mUserRestrictionsParentPreference.setOnPreferenceClickListener(this);
+        }
 
-        findPreference(REBOOT_KEY).setOnPreferenceClickListener(this);
-        findPreference(SET_SHORT_SUPPORT_MESSAGE_KEY).setOnPreferenceClickListener(this);
-        findPreference(SET_LONG_SUPPORT_MESSAGE_KEY).setOnPreferenceClickListener(this);
-        findPreference(SET_NEW_PASSWORD).setOnPreferenceClickListener(this);
-        findPreference(SET_PROFILE_PARENT_NEW_PASSWORD).setOnPreferenceClickListener(this);
-        findPreference(CROSS_PROFILE_APPS).setOnPreferenceClickListener(this);
-        findPreference(CROSS_PROFILE_APPS_WHITELIST).setOnPreferenceClickListener(this);
+        setOnPreferenceClickListener(REBOOT_KEY);
+        setOnPreferenceClickListener(SET_SHORT_SUPPORT_MESSAGE_KEY);
+        setOnPreferenceClickListener(SET_LONG_SUPPORT_MESSAGE_KEY);
+        setOnPreferenceClickListener(SET_NEW_PASSWORD);
+        setOnPreferenceClickListener(SET_PROFILE_PARENT_NEW_PASSWORD);
+        setOnPreferenceClickListener(CROSS_PROFILE_APPS);
+        setOnPreferenceClickListener(CROSS_PROFILE_APPS_WHITELIST);
+        setOnPreferenceClickListener(SET_SCREEN_BRIGHTNESS_KEY);
 
-        findPreference(SET_SCREEN_BRIGHTNESS_KEY).setOnPreferenceClickListener(this);
         mAutoBrightnessPreference = (DpcSwitchPreference) findPreference(AUTO_BRIGHTNESS_KEY);
-        mAutoBrightnessPreference.setOnPreferenceChangeListener(this);
-        findPreference(SET_SCREEN_OFF_TIMEOUT_KEY).setOnPreferenceClickListener(this);
+        if (mAutoBrightnessPreference != null) {
+            mAutoBrightnessPreference.setOnPreferenceChangeListener(this);
+        }
 
-        findPreference(SET_TIME_KEY).setOnPreferenceClickListener(this);
-        findPreference(SET_TIME_ZONE_KEY).setOnPreferenceClickListener(this);
-
-        findPreference(SET_PROFILE_NAME_KEY).setOnPreferenceClickListener(this);
-
-        findPreference(MANAGE_OVERRIDE_APN_KEY).setOnPreferenceClickListener(this);
-        findPreference(MANAGED_SYSTEM_UPDATES_KEY).setOnPreferenceClickListener(this);
-
-        findPreference(CROSS_PROFILE_CALENDAR_KEY).setOnPreferenceClickListener(this);
-        findPreference(FACTORY_RESET_ORG_OWNED_DEVICE).setOnPreferenceClickListener(this);
-        findPreference(SET_FACTORY_RESET_PROTECTION_POLICY_KEY).setOnPreferenceClickListener(this);
+        setOnPreferenceClickListener(SET_SCREEN_OFF_TIMEOUT_KEY);
+        setOnPreferenceClickListener(SET_TIME_KEY);
+        setOnPreferenceClickListener(SET_TIME_ZONE_KEY);
+        setOnPreferenceClickListener(SET_PROFILE_NAME_KEY);
+        setOnPreferenceClickListener(MANAGE_OVERRIDE_APN_KEY);
+        setOnPreferenceClickListener(MANAGED_SYSTEM_UPDATES_KEY);
+        setOnPreferenceClickListener(CROSS_PROFILE_CALENDAR_KEY);
+        setOnPreferenceClickListener(FACTORY_RESET_ORG_OWNED_DEVICE);
+        setOnPreferenceClickListener(SET_FACTORY_RESET_PROTECTION_POLICY_KEY);
 
         DpcPreference bindDeviceAdminPreference =
                 (DpcPreference) findPreference(BIND_DEVICE_ADMIN_POLICIES);
-        bindDeviceAdminPreference.setCustomConstraint(
-                () -> (Util.getBindDeviceAdminTargetUsers(getActivity()).size() == 1)
-                        ? NO_CUSTOM_CONSTRIANT
-                        : R.string.require_one_po_to_bind);
-        bindDeviceAdminPreference.setOnPreferenceClickListener(this);
+        if (bindDeviceAdminPreference != null) {
+            bindDeviceAdminPreference.setCustomConstraint(
+                    () -> (Util.getBindDeviceAdminTargetUsers(getActivity()).size() == 1)
+                            ? NO_CUSTOM_CONSTRIANT
+                            : R.string.require_one_po_to_bind);
+            bindDeviceAdminPreference.setOnPreferenceClickListener(this);
+        }
 
         mSetAutoTimeRequiredPreference = (DpcSwitchPreference) findPreference(
                 SET_AUTO_TIME_REQUIRED_KEY);
-        mSetAutoTimeRequiredPreference.addCustomConstraint(this::validateDeviceOwnerBeforeO);
-        mSetAutoTimeRequiredPreference.setOnPreferenceChangeListener(this);
+        if (mSetAutoTimeRequiredPreference != null) {
+            mSetAutoTimeRequiredPreference.addCustomConstraint(this::validateDeviceOwnerBeforeO);
+            mSetAutoTimeRequiredPreference.setOnPreferenceChangeListener(this);
+        }
+
         mSetAutoTimePreference = (DpcSwitchPreference) findPreference(SET_AUTO_TIME_KEY);
-        mSetAutoTimePreference.setOnPreferenceChangeListener(this);
+        if (mSetAutoTimePreference != null) {
+            mSetAutoTimePreference.setOnPreferenceChangeListener(this);
+        }
+
         mSetAutoTimeZonePreference = (DpcSwitchPreference) findPreference(SET_AUTO_TIME_ZONE_KEY);
-        mSetAutoTimeZonePreference.setOnPreferenceChangeListener(this);
+        if (mSetAutoTimeZonePreference != null) {
+            mSetAutoTimeZonePreference.setOnPreferenceChangeListener(this);
+        }
 
         mSetDeviceOrganizationNamePreference =
         (EditTextPreference) findPreference(SET_DEVICE_ORGANIZATION_NAME_KEY);
-        mSetDeviceOrganizationNamePreference.setOnPreferenceChangeListener(this);
+        if (mSetDeviceOrganizationNamePreference != null) {
+            mSetDeviceOrganizationNamePreference.setOnPreferenceChangeListener(this);
+        }
 
         mSetLocationEnabledPreference = (DpcSwitchPreference) findPreference(
             SET_LOCATION_ENABLED_KEY);
-        mSetLocationEnabledPreference.setOnPreferenceChangeListener(this);
+        if (mSetLocationEnabledPreference != null) {
+            mSetLocationEnabledPreference.setOnPreferenceChangeListener(this);
+        }
 
         mSetLocationModePreference = (DpcSwitchPreference) findPreference(SET_LOCATION_MODE_KEY);
-        mSetLocationModePreference.setOnPreferenceChangeListener(this);
+        if (mSetLocationModePreference != null) {
+            mSetLocationModePreference.setOnPreferenceChangeListener(this);
+        }
 
         mSuspendPersonalApps = (DpcSwitchPreference) findPreference(SUSPEND_PERSONAL_APPS_KEY);
-        mSuspendPersonalApps.setOnPreferenceChangeListener(this);
+        if (mSuspendPersonalApps != null) {
+            mSuspendPersonalApps.setOnPreferenceChangeListener(this);
+        }
 
         mProfileMaxTimeOff = (DpcEditTextPreference) findPreference(PROFILE_MAX_TIME_OFF_KEY);
-        mProfileMaxTimeOff.setOnPreferenceChangeListener(this);
+        if (mProfileMaxTimeOff != null) {
+            mProfileMaxTimeOff.setOnPreferenceChangeListener(this);
+        }
+
         maybeUpdateProfileMaxTimeOff();
 
         onCreateSetNewPasswordWithComplexityPreference();
@@ -788,7 +907,18 @@ public class PolicyManagementFragment extends BaseSearchablePolicyPreferenceFrag
         reloadPersonalAppsSuspendedUi();
     }
 
+    private void setOnPreferenceClickListener(String preferenceName) {
+        Preference stopLockTask = findPreference(preferenceName);
+        if (stopLockTask != null) {
+            stopLockTask.setOnPreferenceClickListener(this);
+        }
+    }
+
     private void maybeUpdateProfileMaxTimeOff() {
+        if (mProfileMaxTimeOff == null) {
+            return;
+        }
+
         if (mProfileMaxTimeOff.isEnabled()) {
             final String currentValueAsString = Long.toString(
                     TimeUnit.MILLISECONDS.toSeconds(
@@ -800,6 +930,10 @@ public class PolicyManagementFragment extends BaseSearchablePolicyPreferenceFrag
 
     @TargetApi(Util.R_VERSION_CODE)
     private void reloadPersonalAppsSuspendedUi() {
+        if (mSuspendPersonalApps == null) {
+            return;
+        }
+
         if (mSuspendPersonalApps.isEnabled()) {
             int suspendReasons =
                     mDevicePolicyManager.getPersonalAppsSuspendedReasons(mAdminComponentName);
@@ -815,22 +949,27 @@ public class PolicyManagementFragment extends BaseSearchablePolicyPreferenceFrag
     private void onCreateSetNewPasswordWithComplexityPreference() {
         ListPreference complexityPref =
             (ListPreference) findPreference(SET_NEW_PASSWORD_WITH_COMPLEXITY);
-        List<CharSequence> entries = new ArrayList<>();
-        List<CharSequence> values = new ArrayList<>();
-        int size = PASSWORD_COMPLEXITY.size();
-        for (int i = 0; i < size; i++) {
-            entries.add(getString(PASSWORD_COMPLEXITY.valueAt(i)));
-            values.add(Integer.toString(PASSWORD_COMPLEXITY.keyAt(i)));
+        if (complexityPref != null) {
+            List<CharSequence> entries = new ArrayList<>();
+            List<CharSequence> values = new ArrayList<>();
+            int size = PASSWORD_COMPLEXITY.size();
+            for (int i = 0; i < size; i++) {
+                entries.add(getString(PASSWORD_COMPLEXITY.valueAt(i)));
+                values.add(Integer.toString(PASSWORD_COMPLEXITY.keyAt(i)));
+            }
+            complexityPref.setEntries(entries.toArray(new CharSequence[size]));
+            complexityPref.setEntryValues(values.toArray(new CharSequence[size]));
+            complexityPref.setOnPreferenceChangeListener(this);
         }
-        complexityPref.setEntries(entries.toArray(new CharSequence[size]));
-        complexityPref.setEntryValues(values.toArray(new CharSequence[size]));
-        complexityPref.setOnPreferenceChangeListener(this);
     }
 
     private void constrainSpecialCasePreferences() {
         // Reset password can be used in all contexts since N
         if (Util.SDK_INT >= VERSION_CODES.N) {
-            ((DpcPreference) findPreference(RESET_PASSWORD_KEY)).clearNonCustomConstraints();
+            DpcPreference preference = ((DpcPreference) findPreference(RESET_PASSWORD_KEY));
+            if (preference != null) {
+                preference.clearNonCustomConstraints();
+            }
         }
     }
 
@@ -844,8 +983,10 @@ public class PolicyManagementFragment extends BaseSearchablePolicyPreferenceFrag
             String[] lockTaskPreferences = { MANAGE_LOCK_TASK_LIST_KEY,
                     CHECK_LOCK_TASK_PERMITTED_KEY, START_LOCK_TASK, STOP_LOCK_TASK };
             for (String preference : lockTaskPreferences) {
-                ((DpcPreferenceBase) findPreference(preference))
-                        .setAdminConstraint(DpcPreferenceHelper.ADMIN_DEVICE_OWNER);
+                DpcPreferenceBase pref = ((DpcPreferenceBase) findPreference(preference));
+                if (pref != null) {
+                    pref.setAdminConstraint(DpcPreferenceHelper.ADMIN_DEVICE_OWNER);
+                }
             }
         }
     }
@@ -1888,6 +2029,10 @@ public class PolicyManagementFragment extends BaseSearchablePolicyPreferenceFrag
      * </p>
      */
     private void updateStayOnWhilePluggedInPreference() {
+        if (mStayOnWhilePluggedInSwitchPreference == null) {
+            return;
+        }
+
         if (!mStayOnWhilePluggedInSwitchPreference.isEnabled()) {
             return;
         }
@@ -1914,6 +2059,10 @@ public class PolicyManagementFragment extends BaseSearchablePolicyPreferenceFrag
      * </p>
      */
     public void updateInstallNonMarketAppsPreference() {
+        if (mInstallNonMarketAppsPreference == null) {
+            return;
+        }
+
         int isInstallNonMarketAppsAllowed = Settings.Secure.getInt(
                 getActivity().getContentResolver(), Settings.Secure.INSTALL_NON_MARKET_APPS, 0);
         mInstallNonMarketAppsPreference.setChecked(
@@ -2296,6 +2445,10 @@ public class PolicyManagementFragment extends BaseSearchablePolicyPreferenceFrag
             // so this code not executing will not be noticed
             return;
         }
+        if (mEnableAppFeedbackNotificationsPreference == null) {
+            return;
+        }
+
         mEnableAppFeedbackNotificationsPreference.setChecked(
             PreferenceManager.getDefaultSharedPreferences(getContext())
                 .getBoolean(getString(R.string.app_feedback_notifications), false));
@@ -2318,13 +2471,16 @@ public class PolicyManagementFragment extends BaseSearchablePolicyPreferenceFrag
         } else {
             appStatusStringId = R.string.this_is_not_an_admin;
         }
-        findPreference(APP_STATUS_KEY).setSummary(appStatusStringId);
+        Preference preference = findPreference(APP_STATUS_KEY);
+        if (preference != null) {
+            preference.setSummary(appStatusStringId);
+        }
     }
 
     @TargetApi(VERSION_CODES.M)
     private void loadSecurityPatch() {
         Preference securityPatchPreference = findPreference(SECURITY_PATCH_KEY);
-        if (!securityPatchPreference.isEnabled()) {
+        if (securityPatchPreference == null || !securityPatchPreference.isEnabled()) {
             return;
         }
 
@@ -2344,7 +2500,7 @@ public class PolicyManagementFragment extends BaseSearchablePolicyPreferenceFrag
     @TargetApi(VERSION_CODES.P)
     private void loadSeparateChallenge() {
         final Preference separateChallengePreference = findPreference(SEPARATE_CHALLENGE_KEY);
-        if (!separateChallengePreference.isEnabled()) {
+        if (separateChallengePreference == null || !separateChallengePreference.isEnabled()) {
             return;
         }
 
@@ -2356,7 +2512,7 @@ public class PolicyManagementFragment extends BaseSearchablePolicyPreferenceFrag
 
     private void loadPasswordComplexity() {
         Preference passwordComplexityPreference = findPreference(PASSWORD_COMPLEXITY_KEY);
-        if (!passwordComplexityPreference.isEnabled()) {
+        if (passwordComplexityPreference == null || !passwordComplexityPreference.isEnabled()) {
             return;
         }
 
@@ -2377,7 +2533,7 @@ public class PolicyManagementFragment extends BaseSearchablePolicyPreferenceFrag
     @TargetApi(VERSION_CODES.N)
     private void loadPasswordCompliant() {
         Preference passwordCompliantPreference = findPreference(PASSWORD_COMPLIANT_KEY);
-        if (!passwordCompliantPreference.isEnabled()) {
+        if (passwordCompliantPreference == null || !passwordCompliantPreference.isEnabled()) {
             return;
         }
 
@@ -2399,6 +2555,10 @@ public class PolicyManagementFragment extends BaseSearchablePolicyPreferenceFrag
 
     @TargetApi(VERSION_CODES.P)
     private void reloadEnableLogoutUi() {
+        if (mEnableLogoutPreference == null) {
+            return;
+        }
+
         if (mEnableLogoutPreference.isEnabled()) {
             mEnableLogoutPreference.setChecked(mDevicePolicyManager.isLogoutEnabled());
         }
@@ -2406,6 +2566,10 @@ public class PolicyManagementFragment extends BaseSearchablePolicyPreferenceFrag
 
     @TargetApi(VERSION_CODES.P)
     private void reloadAutoBrightnessUi() {
+        if (mAutoBrightnessPreference == null) {
+            return;
+        }
+
         if (mAutoBrightnessPreference.isEnabled()) {
             final String brightnessMode = Settings.System.getString(
                     getActivity().getContentResolver(), Settings.System.SCREEN_BRIGHTNESS_MODE);
@@ -2444,22 +2608,53 @@ public class PolicyManagementFragment extends BaseSearchablePolicyPreferenceFrag
 
     @TargetApi(VERSION_CODES.P)
     private void reloadAffiliatedApis() {
+        if (mAffiliatedUserPreference == null) {
+            return;
+        }
+
         if (mAffiliatedUserPreference.isEnabled()) {
             mAffiliatedUserPreference.setSummary(
                     mDevicePolicyManager.isAffiliatedUser() ? R.string.yes : R.string.no);
         }
-        mInstallExistingPackagePreference.refreshEnabledState();
-        mManageLockTaskListPreference.refreshEnabledState();
-        mSetLockTaskFeaturesPreference.refreshEnabledState();
-        mLogoutUserPreference.refreshEnabledState();
-        mDisableStatusBarPreference.refreshEnabledState();
-        mReenableStatusBarPreference.refreshEnabledState();
-        mDisableKeyguardPreference.refreshEnabledState();
-        mReenableKeyguardPreference.refreshEnabledState();
+        if (mInstallExistingPackagePreference != null) {
+            mInstallExistingPackagePreference.refreshEnabledState();
+        }
+
+        if (mManageLockTaskListPreference != null){
+            mManageLockTaskListPreference.refreshEnabledState();
+        }
+
+        if (mSetLockTaskFeaturesPreference != null){
+            mSetLockTaskFeaturesPreference.refreshEnabledState();
+        }
+
+        if (mLogoutUserPreference != null){
+            mLogoutUserPreference.refreshEnabledState();
+        }
+
+        if (mDisableStatusBarPreference != null){
+            mDisableStatusBarPreference.refreshEnabledState();
+        }
+
+        if (mReenableStatusBarPreference != null){
+            mReenableStatusBarPreference.refreshEnabledState();
+        }
+
+        if (mDisableKeyguardPreference != null){
+            mDisableKeyguardPreference.refreshEnabledState();
+        }
+
+        if (mReenableKeyguardPreference != null){
+            mReenableKeyguardPreference.refreshEnabledState();
+        }
     }
 
     @TargetApi(VERSION_CODES.P)
     private void loadIsEphemeralUserUi() {
+        if (mEphemeralUserPreference == null) {
+            return;
+        }
+
         if (mEphemeralUserPreference.isEnabled()) {
             boolean isEphemeralUser = mDevicePolicyManager.isEphemeralUser(mAdminComponentName);
             mEphemeralUserPreference.setSummary(isEphemeralUser ? R.string.yes : R.string.no);
@@ -2468,6 +2663,10 @@ public class PolicyManagementFragment extends BaseSearchablePolicyPreferenceFrag
 
     @TargetApi(VERSION_CODES.LOLLIPOP)
     private void reloadCameraDisableUi() {
+        if (mDisableCameraSwitchPreference == null) {
+            return;
+        }
+
         boolean isCameraDisabled = mDevicePolicyManager.getCameraDisabled(mAdminComponentName);
         mDisableCameraSwitchPreference.setChecked(isCameraDisabled);
     }
@@ -2482,26 +2681,47 @@ public class PolicyManagementFragment extends BaseSearchablePolicyPreferenceFrag
 
     @TargetApi(VERSION_CODES.O)
     private void reloadEnableNetworkLoggingUi() {
+        if (mEnableNetworkLoggingPreference == null) {
+            return;
+        }
+
         if (mEnableNetworkLoggingPreference.isEnabled()) {
             boolean isNetworkLoggingEnabled = mDevicePolicyManager.isNetworkLoggingEnabled(mAdminComponentName);
             mEnableNetworkLoggingPreference.setChecked(isNetworkLoggingEnabled);
-            mRequestNetworkLogsPreference.refreshEnabledState();
+
+            if (mRequestNetworkLogsPreference != null) {
+                mRequestNetworkLogsPreference.refreshEnabledState();
+            }
         }
     }
 
     @TargetApi(VERSION_CODES.N)
     private void reloadEnableSecurityLoggingUi() {
+        if (mEnableSecurityLoggingPreference == null) {
+            return;
+        }
+
         if (mEnableSecurityLoggingPreference.isEnabled()) {
             boolean securityLoggingEnabled =
                 mDevicePolicyManager.isSecurityLoggingEnabled(mAdminComponentName);
             mEnableSecurityLoggingPreference.setChecked(securityLoggingEnabled);
-            mRequestSecurityLogsPreference.refreshEnabledState();
-            mRequestPreRebootSecurityLogsPreference.refreshEnabledState();
+
+            if (mRequestSecurityLogsPreference != null) {
+                mRequestSecurityLogsPreference.refreshEnabledState();
+            }
+
+            if (mRequestPreRebootSecurityLogsPreference != null) {
+                mRequestPreRebootSecurityLogsPreference.refreshEnabledState();
+            }
         }
     }
 
     @TargetApi(VERSION_CODES.O)
     private void reloadEnableBackupServiceUi() {
+        if (mEnableBackupServicePreference == null) {
+            return;
+        }
+
         if (mEnableBackupServicePreference.isEnabled()) {
             mEnableBackupServicePreference.setChecked(mDevicePolicyManager.isBackupServiceEnabled(
                 mAdminComponentName));
@@ -2510,6 +2730,10 @@ public class PolicyManagementFragment extends BaseSearchablePolicyPreferenceFrag
 
     //@TargetApi(VERSION_CODES.R)
     private void reloadCommonCriteriaModeUi() {
+        if (mCommonCriteriaModePreference == null) {
+            return;
+        }
+
         if (mCommonCriteriaModePreference.isEnabled()) {
             mCommonCriteriaModePreference.setChecked(
                 mDevicePolicyManager.isCommonCriteriaModeEnabled(mAdminComponentName));
@@ -2518,6 +2742,10 @@ public class PolicyManagementFragment extends BaseSearchablePolicyPreferenceFrag
 
     @TargetApi(VERSION_CODES.LOLLIPOP)
     private void reloadScreenCaptureDisableUi() {
+        if (mDisableScreenCaptureSwitchPreference == null) {
+            return;
+        }
+
         boolean isScreenCaptureDisabled = mDevicePolicyManager.getScreenCaptureDisabled(
                 mAdminComponentName);
         mDisableScreenCaptureSwitchPreference.setChecked(isScreenCaptureDisabled);
@@ -2533,12 +2761,20 @@ public class PolicyManagementFragment extends BaseSearchablePolicyPreferenceFrag
 
     @TargetApi(VERSION_CODES.LOLLIPOP)
     private void reloadSetAutoTimeRequiredUi() {
+        if (mSetAutoTimeRequiredPreference == null) {
+            return;
+        }
+
         boolean isAutoTimeRequired = mDevicePolicyManager.getAutoTimeRequired();
         mSetAutoTimeRequiredPreference.setChecked(isAutoTimeRequired);
     }
 
     @TargetApi(Util.R_VERSION_CODE)
     private void reloadSetAutoTimeUi() {
+        if (mSetAutoTimePreference == null) {
+            return;
+        }
+
         if (Util.SDK_INT < VERSION_CODES.R) {
             return;
         }
@@ -2555,6 +2791,10 @@ public class PolicyManagementFragment extends BaseSearchablePolicyPreferenceFrag
 
     @TargetApi(Util.R_VERSION_CODE)
     private void reloadSetAutoTimeZoneUi() {
+        if (mSetAutoTimeZonePreference == null) {
+            return;
+        }
+
         if (Util.SDK_INT < VERSION_CODES.R) {
             return;
         }
@@ -2572,6 +2812,10 @@ public class PolicyManagementFragment extends BaseSearchablePolicyPreferenceFrag
 
     @TargetApi(VERSION_CODES.LOLLIPOP)
     private void reloadMuteAudioUi() {
+        if (mMuteAudioSwitchPreference == null) {
+            return;
+        }
+
         if (mMuteAudioSwitchPreference.isEnabled()) {
             final boolean isAudioMuted = mDevicePolicyManager.isMasterVolumeMuted(mAdminComponentName);
             mMuteAudioSwitchPreference.setChecked(isAudioMuted);
