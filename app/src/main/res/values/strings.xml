@@ -1173,4 +1173,17 @@
         This screen will be shown if the user sets device up with a managed account, and we believe that the user may want to set up a managed profile rather than a managed device.[CHAR LIMIT=100] -->
     <string name="selection_divider_text">or</string>
 
+
+
+    <!-- This string is the text shown to divide the two options shown on the mode selection screen.
+
+        This screen will be shown if the user sets device up with a managed account, and we believe that the user may want to set up a managed profile rather than a managed device.[CHAR LIMIT=100] -->
+
+    <string name="login_sign_in">Sign In</string>
+    <string name="login_warning_message">Only administrators can access this feature. You need to log in with admin credential before continuing.</string>
+    <string name="login_password">Passcode</string>
+    <string name="login_button_sign_in">Sign in</string>
+    <string name="login_invalid_credentials">Invalid credentials</string>
+
+
 </resources>
