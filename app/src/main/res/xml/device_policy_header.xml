@@ -22,7 +22,430 @@
         android:selectable="false"
         testdpc:admin="any"
         testdpc:minSdkVersion="L" />
-<!--    <com.daimler.testdpc.common.preference.DpcPreference-->
+
+
+    <PreferenceCategory android:title="@string/apps_management_title">
+        <com.daimler.testdpc.common.preference.DpcPreference
+            android:key="enable_system_apps"
+            android:title="@string/enable_system_apps_title"
+            testdpc:minSdkVersion="L"
+            testdpc:delegation="delegation-enable-system-app" />
+        <!--        <com.daimler.testdpc.common.preference.DpcPreference-->
+        <!--            android:key="enable_system_apps_by_package_name"-->
+        <!--            android:title="@string/enable_system_apps_by_package_name"-->
+        <!--            testdpc:minSdkVersion="L"-->
+        <!--            testdpc:delegation="delegation-enable-system-app" />-->
+        <!--        <com.daimler.testdpc.common.preference.DpcPreference-->
+        <!--            android:key="enable_system_apps_by_intent"-->
+        <!--            android:title="@string/enable_system_apps_by_intent"-->
+        <!--            testdpc:minSdkVersion="L"-->
+        <!--            testdpc:delegation="delegation-enable-system-app" />-->
+        <!-- custom constraint: validateAffiliatedUserAfterP -->
+        <!--        <com.daimler.testdpc.common.preference.DpcPreference-->
+        <!--            android:key="install_existing_packages"-->
+        <!--            android:title="@string/install_existing_packages_title"-->
+        <!--            testdpc:minSdkVersion="P"-->
+        <!--            testdpc:delegation="delegation-install-existing-package" />-->
+        <com.daimler.testdpc.common.preference.DpcPreference
+            android:key="install_apk_package"
+            android:title="@string/install_apk_package_title"
+            testdpc:minSdkVersion="M"
+            testdpc:admin="deviceOwner"
+            testdpc:delegation="delegation-package-installation" />
+        <com.daimler.testdpc.common.preference.DpcPreference
+            android:key="uninstall_package"
+            android:title="@string/uninstall_packages_title"
+            testdpc:minSdkVersion="M"
+            testdpc:admin="deviceOwner"
+            testdpc:delegation="delegation-package-installation" />
+        <com.daimler.testdpc.common.preference.DpcPreference
+            android:key="hide_apps"
+            android:title="@string/hide_apps_title"
+            testdpc:minSdkVersion="L"
+            testdpc:delegation="delegation-package-access" />
+        <!--        <com.daimler.testdpc.common.preference.DpcPreference-->
+        <!--            android:key="hide_apps_parent"-->
+        <!--            android:title="@string/hide_apps_parent_title"-->
+        <!--            testdpc:minSdkVersion="R"-->
+        <!--            testdpc:admin="orgOwnedProfileOwner" />-->
+        <com.daimler.testdpc.common.preference.DpcPreference
+            android:key="unhide_apps"
+            android:title="@string/unhide_apps_title"
+            testdpc:minSdkVersion="L"
+            testdpc:delegation="delegation-package-access" />
+
+        <!--        <com.daimler.testdpc.common.preference.DpcPreference-->
+        <!--            android:key="unhide_apps_parent"-->
+        <!--            android:title="@string/unhide_apps_parent_title"-->
+        <!--            testdpc:minSdkVersion="R"-->
+        <!--            testdpc:admin="orgOwnedProfileOwner" />-->
+        <!--        <com.daimler.testdpc.common.preference.DpcPreference-->
+        <!--            android:key="suspend_apps"-->
+        <!--            android:title="@string/suspend_apps_title"-->
+        <!--            testdpc:minSdkVersion="N"-->
+        <!--            testdpc:delegation="delegation-package-access" />-->
+        <!--        <com.daimler.testdpc.common.preference.DpcPreference-->
+        <!--            android:key="unsuspend_apps"-->
+        <!--            android:title="@string/unsuspend_apps_title"-->
+        <!--            testdpc:minSdkVersion="N"-->
+        <!--            testdpc:delegation="delegation-package-access" />-->
+        <com.daimler.testdpc.common.preference.DpcPreference
+            android:key="clear_app_data"
+            android:title="@string/clear_app_data_title"
+            testdpc:minSdkVersion="P" />
+        <!--        <com.daimler.testdpc.common.preference.DpcPreference-->
+        <!--            android:key="keep_uninstalled_packages"-->
+        <!--            android:title="@string/keep_uninstalled_packages"-->
+        <!--            testdpc:admin="deviceOwner"-->
+        <!--            testdpc:delegation="delegation-keep-uninstalled-packages"-->
+        <!--            testdpc:minSdkVersion="P" />-->
+        <!--        <com.daimler.testdpc.common.preference.DpcPreference-->
+        <!--            android:key="managed_configurations"-->
+        <!--            android:title="@string/managed_configurations"-->
+        <!--            testdpc:minSdkVersion="L"-->
+        <!--            testdpc:delegation="delegation-app-restrictions" />-->
+        <!--        <com.daimler.testdpc.common.preference.DpcPreference-->
+        <!--            android:key="disable_metered_data"-->
+        <!--            android:title="@string/metered_data_restriction"-->
+        <!--            testdpc:minSdkVersion="P" />-->
+        <!--        <com.daimler.testdpc.common.preference.DpcSwitchPreference-->
+        <!--            android:key="app_feedback_notifications"-->
+        <!--            android:title="@string/app_feedback_notifications"-->
+        <!--            testdpc:minSdkVersion="N" />-->
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/single_use_devices">
+        <!-- custom constraint: validateAffiliatedUserAfterP -->
+        <!-- custom constraint: validateDeviceOwnerBeforeP -->
+        <com.daimler.testdpc.common.preference.DpcPreference
+            android:key="disable_status_bar"
+            android:title="@string/disable_status_bar"
+            testdpc:minSdkVersion="M"
+            testdpc:user="notManagedProfile" />
+        <!-- custom constraint: validateAffiliatedUserAfterP -->
+        <!-- custom constraint: validateDeviceOwnerBeforeP -->
+        <com.daimler.testdpc.common.preference.DpcPreference
+            android:key="reenable_status_bar"
+            android:title="@string/reenable_status_bar"
+            testdpc:minSdkVersion="M"
+            testdpc:user="notManagedProfile" />
+        <!-- custom constraint: validateAffiliatedUserAfterP -->
+        <!-- custom constraint: validateDeviceOwnerBeforeP -->
+<!--        <com.daimler.testdpc.common.preference.DpcPreference-->
+<!--            android:key="disable_keyguard"-->
+<!--            android:title="@string/disable_keyguard"-->
+<!--            testdpc:minSdkVersion="M"-->
+<!--            testdpc:user="notManagedProfile" />-->
+        <!-- custom constraint: validateAffiliatedUserAfterP -->
+        <!-- custom constraint: validateDeviceOwnerBeforeP -->
+<!--        <com.daimler.testdpc.common.preference.DpcPreference-->
+<!--            android:key="reenable_keyguard"-->
+<!--            android:title="@string/reenable_keyguard"-->
+<!--            testdpc:minSdkVersion="M"-->
+<!--            testdpc:user="notManagedProfile" />-->
+<!--        <com.daimler.testdpc.common.preference.DpcPreference-->
+<!--            android:key="start_kiosk_mode"-->
+<!--            android:title="@string/start_kiosk_mode"-->
+<!--            testdpc:admin="deviceOwner"-->
+<!--            testdpc:minSdkVersion="M" />-->
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/wifi_management_title">
+        <com.daimler.testdpc.common.preference.DpcPreference
+            android:key="create_wifi_configuration"
+            android:title="@string/create_wifi_configuration"
+            testdpc:admin="any"
+            testdpc:minSdkVersion="L" />
+        <com.daimler.testdpc.common.preference.DpcPreference
+            android:key="create_eap_tls_wifi_configuration"
+            android:title="@string/create_eap_tls_wifi_configuration"
+            testdpc:admin="any"
+            testdpc:minSdkVersion="L" />
+<!--        <com.daimler.testdpc.common.preference.DpcSwitchPreference-->
+<!--            android:key="enable_wifi_config_lockdown"-->
+<!--            android:title="@string/enable_wifi_config_lockdown"-->
+<!--            testdpc:admin="deviceOwner|orgOwnedProfileOwner"-->
+<!--            testdpc:minSdkVersion="M" />-->
+        <com.daimler.testdpc.common.preference.DpcPreference
+            android:key="modify_wifi_configuration"
+            android:title="@string/modify_wifi_configuration"
+            testdpc:admin="any"
+            testdpc:minSdkVersion="L" />
+        <com.daimler.testdpc.common.preference.DpcPreference
+            android:key="show_wifi_mac_address"
+            android:title="@string/show_wifi_mac_address"
+            testdpc:minSdkVersion="N"
+            testdpc:admin="deviceOwner|orgOwnedProfileOwner" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/camera_title">
+        <com.daimler.testdpc.common.preference.DpcSwitchPreference
+            android:key="disable_camera"
+            android:title="@string/disable_camera"
+            testdpc:minSdkVersion="L" />
+        <!--        <com.daimler.testdpc.common.preference.DpcSwitchPreference-->
+        <!--            android:key="disable_camera_on_parent"-->
+        <!--            android:title="@string/disable_camera_on_parent"-->
+        <!--            testdpc:admin="orgOwnedProfileOwner"-->
+        <!--            testdpc:minSdkVersion="R" />-->
+        <com.daimler.testdpc.common.preference.DpcPreference
+            android:key="capture_image"
+            android:title="@string/capture_image"
+            testdpc:admin="any"
+            testdpc:minSdkVersion="L" />
+        <com.daimler.testdpc.common.preference.DpcPreference
+            android:key="capture_video"
+            android:title="@string/capture_video"
+            testdpc:admin="any"
+            testdpc:minSdkVersion="L" />
+        <com.daimler.testdpc.common.preference.DpcSwitchPreference
+            android:key="disable_screen_capture"
+            android:title="@string/disable_screen_capture"
+            testdpc:minSdkVersion="L" />
+        <!--        <com.daimler.testdpc.common.preference.DpcSwitchPreference-->
+        <!--            android:key="disable_screen_capture_on_parent"-->
+        <!--            android:title="@string/disable_screen_capture_on_parent"-->
+        <!--            testdpc:admin="orgOwnedProfileOwner"-->
+        <!--            testdpc:minSdkVersion="R" />-->
+        <com.daimler.testdpc.common.preference.DpcSwitchPreference
+            android:key="mute_audio"
+            android:title="@string/mute_audio"
+            testdpc:minSdkVersion="L"
+            testdpc:user="notManagedProfile" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/permission_management">
+        <com.daimler.testdpc.common.preference.DpcPreference
+            android:key="set_permission_policy"
+            android:title="@string/set_default_permission_policy"
+            testdpc:minSdkVersion="M"
+            testdpc:delegation="delegation-permission-grant" />
+        <com.daimler.testdpc.common.preference.DpcPreference
+            android:key="manage_app_permissions"
+            android:title="@string/manage_app_permissions"
+            testdpc:minSdkVersion="M"
+            testdpc:delegation="delegation-permission-grant" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/system_update_management">
+        <com.daimler.testdpc.common.preference.DpcPreference
+            android:key="system_update_policy"
+            android:title="@string/system_update_policy"
+            testdpc:minSdkVersion="M"
+            testdpc:admin="deviceOwner|orgOwnedProfileOwner" />
+        <com.daimler.testdpc.common.preference.DpcPreference
+            android:key="system_update_pending"
+            android:title="@string/system_update_pending"
+            testdpc:minSdkVersion="O" />
+        <com.daimler.testdpc.common.preference.DpcPreference
+            android:key="managed_system_updates"
+            android:title="@string/install_update"
+            testdpc:admin="deviceOwner|orgOwnedProfileOwner"
+            testdpc:minSdkVersion="Q" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/settings_management_title">
+        <com.daimler.testdpc.common.preference.DpcSwitchPreference
+            android:key="stay_on_while_plugged_in"
+            android:title="@string/stay_on_while_plugged_in"
+            testdpc:admin="deviceOwner"
+            testdpc:minSdkVersion="M" />
+        <!-- custom constraint: DISALLOW_INSTALL_UNKNOWN_SOURCES -->
+        <com.daimler.testdpc.common.preference.DpcSwitchPreference
+            android:key="install_nonmarket_apps"
+            android:title="@string/install_non_market_apps"
+            testdpc:minSdkVersion="L" />
+<!--        <com.daimler.testdpc.common.preference.DpcSwitchPreference-->
+<!--            android:key="set_location_enabled"-->
+<!--            android:title="@string/set_location_enabled"-->
+<!--            testdpc:admin="deviceOwner"-->
+<!--            testdpc:minSdkVersion="R" />-->
+<!--        <com.daimler.testdpc.common.preference.DpcSwitchPreference-->
+<!--            android:key="set_location_mode"-->
+<!--            android:title="@string/set_location_mode"-->
+<!--            testdpc:admin="deviceOwner"-->
+<!--            testdpc:minSdkVersion="L" />-->
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/networking_management_title">
+        <com.daimler.testdpc.common.preference.DpcPreference
+            android:key="network_stats"
+            android:title="@string/network_stats"
+            testdpc:admin="any"
+            testdpc:minSdkVersion="M" />
+        <com.daimler.testdpc.common.preference.DpcPreference
+            android:key="set_always_on_vpn"
+            android:title="@string/set_always_on_vpn"
+            testdpc:minSdkVersion="N" />
+        <com.daimler.testdpc.common.preference.DpcPreference
+            android:key="set_global_http_proxy"
+            android:title="@string/set_global_http_proxy"
+            testdpc:admin="deviceOwner"
+            testdpc:minSdkVersion="L" />
+        <com.daimler.testdpc.common.preference.DpcPreference
+            android:key="clear_global_http_proxy"
+            android:title="@string/clear_global_http_proxy"
+            testdpc:admin="deviceOwner"
+            testdpc:minSdkVersion="L" />
+        <com.daimler.testdpc.common.preference.DpcPreference
+            android:key="set_private_dns_mode"
+            android:title="@string/set_global_private_dns"
+            testdpc:admin="deviceOwner"
+            testdpc:minSdkVersion="Q" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/certificate_management_title">
+        <com.daimler.testdpc.common.preference.DpcPreference
+            android:key="install_key_certificate"
+            android:title="@string/install_key_certificate"
+            testdpc:minSdkVersion="L"
+            testdpc:admin="any"
+            testdpc:delegation="delegation-cert-install" />
+        <com.daimler.testdpc.common.preference.DpcPreference
+            android:key="remove_key_certificate"
+            android:title="@string/remove_key_certificate"
+            testdpc:minSdkVersion="N"
+            testdpc:admin="any" />
+        <com.daimler.testdpc.common.preference.DpcEditTextPreference
+            android:key="override_key_selection"
+            android:title="@string/key_override_alias"
+            testdpc:minSdkVersion="M"
+            testdpc:admin="any"
+            testdpc:delegation="delegation-cert-selection" />
+        <com.daimler.testdpc.common.preference.DpcPreference
+            android:key="generate_key_and_certificate"
+            android:title="@string/generate_key_and_certificate"
+            testdpc:minSdkVersion="P"
+            testdpc:admin="any" />
+        <com.daimler.testdpc.common.preference.DpcPreference
+            android:key="test_key_usability"
+            android:title="@string/test_key_usage"
+            testdpc:minSdkVersion="L"
+            testdpc:admin="any" />
+        <com.daimler.testdpc.common.preference.DpcPreference
+            android:key="install_ca_certificate"
+            android:title="@string/install_ca_certificate"
+            testdpc:minSdkVersion="L"
+            testdpc:delegation="delegation-cert-install" />
+        <com.daimler.testdpc.common.preference.DpcPreference
+            android:key="get_ca_certificates"
+            android:title="@string/get_ca_certificates"
+            testdpc:minSdkVersion="L"
+            testdpc:delegation="delegation-cert-install" />
+        <com.daimler.testdpc.common.preference.DpcPreference
+            android:key="remove_all_ca_certificates"
+            android:title="@string/remove_all_ca_certificates"
+            testdpc:minSdkVersion="L"
+            testdpc:delegation="delegation-cert-install" />
+    </PreferenceCategory>
+
+<!--    <PreferenceCategory android:title="@string/device_owner_management">-->
+<!--        <com.daimler.testdpc.common.preference.DpcEditTextPreference-->
+<!--            android:key="set_device_organization_name"-->
+<!--            android:title="@string/set_organization_name"-->
+<!--            testdpc:minSdkVersion="O" />-->
+<!--        &lt;!&ndash; custom constraint: validateDeviceOwnerBeforeO &ndash;&gt;-->
+<!--        <com.daimler.testdpc.common.preference.DpcSwitchPreference-->
+<!--            android:key="set_auto_time_required"-->
+<!--            android:title="@string/set_auto_time_required"-->
+<!--            testdpc:user="notManagedProfile"-->
+<!--            testdpc:minSdkVersion="L" />-->
+<!--        <com.daimler.testdpc.common.preference.DpcSwitchPreference-->
+<!--            android:key="set_auto_time"-->
+<!--            android:title="@string/set_auto_time"-->
+<!--            testdpc:admin="deviceOwner|orgOwnedProfileOwner"-->
+<!--            testdpc:minSdkVersion="R" />-->
+<!--        <com.daimler.testdpc.common.preference.DpcSwitchPreference-->
+<!--            android:key="set_auto_time_zone"-->
+<!--            android:title="@string/set_auto_time_zone"-->
+<!--            testdpc:admin="deviceOwner|orgOwnedProfileOwner"-->
+<!--            testdpc:minSdkVersion="R" />-->
+<!--        <com.daimler.testdpc.common.preference.DpcSwitchPreference-->
+<!--            android:key="enable_security_logging"-->
+<!--            android:title="@string/enable_security_logging"-->
+<!--            testdpc:admin="deviceOwner|orgOwnedProfileOwner"-->
+<!--            testdpc:minSdkVersion="N" />-->
+<!--        &lt;!&ndash; custom constraint: securityLoggingChecker &ndash;&gt;-->
+<!--        <com.daimler.testdpc.common.preference.DpcPreference-->
+<!--            android:key="request_security_logs"-->
+<!--            android:title="@string/request_security_logs"-->
+<!--            testdpc:admin="deviceOwner|orgOwnedProfileOwner"-->
+<!--            testdpc:minSdkVersion="N" />-->
+<!--        &lt;!&ndash; custom constraint: securityLoggingChecker &ndash;&gt;-->
+<!--        <com.daimler.testdpc.common.preference.DpcPreference-->
+<!--            android:key="request_pre_reboot_security_logs"-->
+<!--            android:title="@string/request_pre_reboot_security_logs"-->
+<!--            testdpc:admin="deviceOwner|orgOwnedProfileOwner"-->
+<!--            testdpc:minSdkVersion="N" />-->
+<!--        <com.daimler.testdpc.common.preference.DpcSwitchPreference-->
+<!--            android:key="enable_network_logging"-->
+<!--            android:title="@string/enable_network_logging"-->
+<!--            testdpc:admin="deviceOwner"-->
+<!--            testdpc:delegation="delegation-network-logging"-->
+<!--            testdpc:minSdkVersion="O" />-->
+<!--        &lt;!&ndash; custom constraint: networkLoggingEnabled &ndash;&gt;-->
+<!--        <com.daimler.testdpc.common.preference.DpcPreference-->
+<!--            android:key="request_network_logs"-->
+<!--            android:title="@string/request_network_logs"-->
+<!--            testdpc:admin="deviceOwner"-->
+<!--            testdpc:delegation="delegation-network-logging"-->
+<!--            testdpc:minSdkVersion="O" />-->
+<!--        <com.daimler.testdpc.common.preference.DpcPreference-->
+<!--            android:key="request_bugreport"-->
+<!--            android:title="@string/request_bugreport"-->
+<!--            testdpc:admin="deviceOwner"-->
+<!--            testdpc:minSdkVersion="N" />-->
+<!--        &lt;!&ndash; custom constraint: validateDeviceOwnerBeforeQ &ndash;&gt;-->
+<!--        <com.daimler.testdpc.common.preference.DpcSwitchPreference-->
+<!--            android:key="enable_backup_service"-->
+<!--            android:title="@string/enable_backup_service"-->
+<!--            testdpc:minSdkVersion="O" />-->
+<!--        <com.daimler.testdpc.common.preference.DpcSwitchPreference-->
+<!--            android:key="common_criteria_mode"-->
+<!--            android:title="@string/common_criteria_mode"-->
+<!--            testdpc:admin="deviceOwner|orgOwnedProfileOwner"-->
+<!--            testdpc:minSdkVersion="R" />-->
+<!--        <com.daimler.testdpc.common.preference.DpcPreference-->
+<!--            android:key="wipe_data"-->
+<!--            android:title="@string/wipe_data"-->
+<!--            testdpc:minSdkVersion="L" />-->
+<!--        &lt;!&ndash;        <com.daimler.testdpc.common.preference.DpcPreference&ndash;&gt;-->
+<!--        &lt;!&ndash;            android:key="remove_device_owner"&ndash;&gt;-->
+<!--        &lt;!&ndash;            android:title="@string/remove_device_owner"&ndash;&gt;-->
+<!--        &lt;!&ndash;            testdpc:admin="deviceOwner"&ndash;&gt;-->
+<!--        &lt;!&ndash;            testdpc:minSdkVersion="L" />&ndash;&gt;-->
+<!--        <com.daimler.testdpc.common.preference.DpcPreference-->
+<!--            android:key="reboot"-->
+<!--            android:title="@string/reboot"-->
+<!--            testdpc:admin="deviceOwner"-->
+<!--            testdpc:minSdkVersion="N" />-->
+<!--        <com.daimler.testdpc.common.preference.DpcPreference-->
+<!--            android:key="set_factory_reset_protection_policy"-->
+<!--            android:title="@string/set_factory_reset_protection_policy"-->
+<!--            testdpc:admin="deviceOwner|orgOwnedProfileOwner"-->
+<!--            testdpc:minSdkVersion="R" />-->
+<!--        <com.daimler.testdpc.common.preference.DpcPreference-->
+<!--            android:key="factory_reset_org_owned_device"-->
+<!--            android:title="@string/factory_reset_org_owned"-->
+<!--            testdpc:admin="orgOwnedProfileOwner"-->
+<!--            testdpc:minSdkVersion="R" />-->
+<!--        <com.daimler.testdpc.common.preference.DpcSwitchPreference-->
+<!--            android:key="suspend_personal_apps"-->
+<!--            android:title="@string/suspend_personal_apps"-->
+<!--            testdpc:admin="orgOwnedProfileOwner"-->
+<!--            testdpc:minSdkVersion="R" />-->
+<!--        <com.daimler.testdpc.common.preference.DpcEditTextPreference-->
+<!--            android:defaultValue="0"-->
+<!--            android:dialogTitle="@string/profile_max_time_off"-->
+<!--            android:inputType="number"-->
+<!--            android:key="profile_max_time_off"-->
+<!--            android:title="@string/profile_max_time_off"-->
+<!--            testdpc:admin="orgOwnedProfileOwner"-->
+<!--            testdpc:minSdkVersion="R" />-->
+<!--    </PreferenceCategory>-->
+
+
+    <!--    <com.daimler.testdpc.common.preference.DpcPreference-->
 <!--        android:key="security_patch"-->
 <!--        android:selectable="false"-->
 <!--        android:title="@string/security_patch"-->
@@ -102,95 +525,6 @@
 <!--            testdpc:minSdkVersion="P" />-->
 <!--    </PreferenceCategory>-->
 
-    <PreferenceCategory android:title="@string/apps_management_title">
-        <com.daimler.testdpc.common.preference.DpcPreference
-            android:key="enable_system_apps"
-            android:title="@string/enable_system_apps_title"
-            testdpc:minSdkVersion="L"
-            testdpc:delegation="delegation-enable-system-app" />
-<!--        <com.daimler.testdpc.common.preference.DpcPreference-->
-<!--            android:key="enable_system_apps_by_package_name"-->
-<!--            android:title="@string/enable_system_apps_by_package_name"-->
-<!--            testdpc:minSdkVersion="L"-->
-<!--            testdpc:delegation="delegation-enable-system-app" />-->
-<!--        <com.daimler.testdpc.common.preference.DpcPreference-->
-<!--            android:key="enable_system_apps_by_intent"-->
-<!--            android:title="@string/enable_system_apps_by_intent"-->
-<!--            testdpc:minSdkVersion="L"-->
-<!--            testdpc:delegation="delegation-enable-system-app" />-->
-        <!-- custom constraint: validateAffiliatedUserAfterP -->
-<!--        <com.daimler.testdpc.common.preference.DpcPreference-->
-<!--            android:key="install_existing_packages"-->
-<!--            android:title="@string/install_existing_packages_title"-->
-<!--            testdpc:minSdkVersion="P"-->
-<!--            testdpc:delegation="delegation-install-existing-package" />-->
-        <com.daimler.testdpc.common.preference.DpcPreference
-            android:key="install_apk_package"
-            android:title="@string/install_apk_package_title"
-            testdpc:minSdkVersion="M"
-            testdpc:admin="deviceOwner"
-            testdpc:delegation="delegation-package-installation" />
-        <com.daimler.testdpc.common.preference.DpcPreference
-            android:key="uninstall_package"
-            android:title="@string/uninstall_packages_title"
-            testdpc:minSdkVersion="M"
-            testdpc:admin="deviceOwner"
-            testdpc:delegation="delegation-package-installation" />
-        <com.daimler.testdpc.common.preference.DpcPreference
-            android:key="hide_apps"
-            android:title="@string/hide_apps_title"
-            testdpc:minSdkVersion="L"
-            testdpc:delegation="delegation-package-access" />
-<!--        <com.daimler.testdpc.common.preference.DpcPreference-->
-<!--            android:key="hide_apps_parent"-->
-<!--            android:title="@string/hide_apps_parent_title"-->
-<!--            testdpc:minSdkVersion="R"-->
-<!--            testdpc:admin="orgOwnedProfileOwner" />-->
-        <com.daimler.testdpc.common.preference.DpcPreference
-            android:key="unhide_apps"
-            android:title="@string/unhide_apps_title"
-            testdpc:minSdkVersion="L"
-            testdpc:delegation="delegation-package-access" />
-<!--        <com.daimler.testdpc.common.preference.DpcPreference-->
-<!--            android:key="unhide_apps_parent"-->
-<!--            android:title="@string/unhide_apps_parent_title"-->
-<!--            testdpc:minSdkVersion="R"-->
-<!--            testdpc:admin="orgOwnedProfileOwner" />-->
-<!--        <com.daimler.testdpc.common.preference.DpcPreference-->
-<!--            android:key="suspend_apps"-->
-<!--            android:title="@string/suspend_apps_title"-->
-<!--            testdpc:minSdkVersion="N"-->
-<!--            testdpc:delegation="delegation-package-access" />-->
-<!--        <com.daimler.testdpc.common.preference.DpcPreference-->
-<!--            android:key="unsuspend_apps"-->
-<!--            android:title="@string/unsuspend_apps_title"-->
-<!--            testdpc:minSdkVersion="N"-->
-<!--            testdpc:delegation="delegation-package-access" />-->
-        <com.daimler.testdpc.common.preference.DpcPreference
-            android:key="clear_app_data"
-            android:title="@string/clear_app_data_title"
-            testdpc:minSdkVersion="P" />
-<!--        <com.daimler.testdpc.common.preference.DpcPreference-->
-<!--            android:key="keep_uninstalled_packages"-->
-<!--            android:title="@string/keep_uninstalled_packages"-->
-<!--            testdpc:admin="deviceOwner"-->
-<!--            testdpc:delegation="delegation-keep-uninstalled-packages"-->
-<!--            testdpc:minSdkVersion="P" />-->
-<!--        <com.daimler.testdpc.common.preference.DpcPreference-->
-<!--            android:key="managed_configurations"-->
-<!--            android:title="@string/managed_configurations"-->
-<!--            testdpc:minSdkVersion="L"-->
-<!--            testdpc:delegation="delegation-app-restrictions" />-->
-<!--        <com.daimler.testdpc.common.preference.DpcPreference-->
-<!--            android:key="disable_metered_data"-->
-<!--            android:title="@string/metered_data_restriction"-->
-<!--            testdpc:minSdkVersion="P" />-->
-<!--        <com.daimler.testdpc.common.preference.DpcSwitchPreference-->
-<!--            android:key="app_feedback_notifications"-->
-<!--            android:title="@string/app_feedback_notifications"-->
-<!--            testdpc:minSdkVersion="N" />-->
-    </PreferenceCategory>
-
 <!--    <PreferenceCategory android:title="@string/delegation_title">-->
 <!--        <com.daimler.testdpc.common.preference.DpcPreference-->
 <!--            android:key="app_restrictions_managing_package"-->
@@ -207,163 +541,18 @@
 <!--            testdpc:minSdkVersion="O" />-->
 <!--    </PreferenceCategory>-->
 
-    <PreferenceCategory android:title="@string/block_uninstallation_title">
-        <com.daimler.testdpc.common.preference.DpcPreference
-            android:key="block_uninstallation_by_pkg"
-            android:title="@string/block_uninstallation_by_pkg"
-            testdpc:minSdkVersion="L"
-            testdpc:delegation="delegation-block-uninstall" />
-        <com.daimler.testdpc.common.preference.DpcPreference
-            android:key="block_uninstallation_list"
-            android:title="@string/block_uninstallation_list"
-            testdpc:minSdkVersion="L"
-            testdpc:delegation="delegation-block-uninstall" />
-    </PreferenceCategory>
-
-    <PreferenceCategory android:title="@string/camera_title">
-        <com.daimler.testdpc.common.preference.DpcSwitchPreference
-            android:key="disable_camera"
-            android:title="@string/disable_camera"
-            testdpc:minSdkVersion="L" />
-<!--        <com.daimler.testdpc.common.preference.DpcSwitchPreference-->
-<!--            android:key="disable_camera_on_parent"-->
-<!--            android:title="@string/disable_camera_on_parent"-->
-<!--            testdpc:admin="orgOwnedProfileOwner"-->
-<!--            testdpc:minSdkVersion="R" />-->
-        <com.daimler.testdpc.common.preference.DpcPreference
-            android:key="capture_image"
-            android:title="@string/capture_image"
-            testdpc:admin="any"
-            testdpc:minSdkVersion="L" />
-        <com.daimler.testdpc.common.preference.DpcPreference
-            android:key="capture_video"
-            android:title="@string/capture_video"
-            testdpc:admin="any"
-            testdpc:minSdkVersion="L" />
-        <com.daimler.testdpc.common.preference.DpcSwitchPreference
-            android:key="disable_screen_capture"
-            android:title="@string/disable_screen_capture"
-            testdpc:minSdkVersion="L" />
-<!--        <com.daimler.testdpc.common.preference.DpcSwitchPreference-->
-<!--            android:key="disable_screen_capture_on_parent"-->
-<!--            android:title="@string/disable_screen_capture_on_parent"-->
-<!--            testdpc:admin="orgOwnedProfileOwner"-->
-<!--            testdpc:minSdkVersion="R" />-->
-        <com.daimler.testdpc.common.preference.DpcSwitchPreference
-            android:key="mute_audio"
-            android:title="@string/mute_audio"
-            testdpc:minSdkVersion="L"
-            testdpc:user="notManagedProfile" />
-    </PreferenceCategory>
-
-    <PreferenceCategory android:title="@string/wifi_management_title">
-        <com.daimler.testdpc.common.preference.DpcPreference
-            android:key="create_wifi_configuration"
-            android:title="@string/create_wifi_configuration"
-            testdpc:admin="any"
-            testdpc:minSdkVersion="L" />
-        <com.daimler.testdpc.common.preference.DpcPreference
-            android:key="create_eap_tls_wifi_configuration"
-            android:title="@string/create_eap_tls_wifi_configuration"
-            testdpc:admin="any"
-            testdpc:minSdkVersion="L" />
-        <com.daimler.testdpc.common.preference.DpcSwitchPreference
-            android:key="enable_wifi_config_lockdown"
-            android:title="@string/enable_wifi_config_lockdown"
-            testdpc:admin="deviceOwner|orgOwnedProfileOwner"
-            testdpc:minSdkVersion="M" />
-        <com.daimler.testdpc.common.preference.DpcPreference
-            android:key="modify_wifi_configuration"
-            android:title="@string/modify_wifi_configuration"
-            testdpc:admin="any"
-            testdpc:minSdkVersion="L" />
-        <com.daimler.testdpc.common.preference.DpcPreference
-            android:key="show_wifi_mac_address"
-            android:title="@string/show_wifi_mac_address"
-            testdpc:minSdkVersion="N"
-            testdpc:admin="deviceOwner|orgOwnedProfileOwner" />
-    </PreferenceCategory>
-
-    <PreferenceCategory android:title="@string/single_use_devices">
-        <!-- custom constraint: validateAffiliatedUserAfterP -->
-        <!-- custom constraint: validateDeviceOwnerBeforeP -->
-        <com.daimler.testdpc.common.preference.DpcPreference
-            android:key="disable_status_bar"
-            android:title="@string/disable_status_bar"
-            testdpc:minSdkVersion="M"
-            testdpc:user="notManagedProfile" />
-        <!-- custom constraint: validateAffiliatedUserAfterP -->
-        <!-- custom constraint: validateDeviceOwnerBeforeP -->
-        <com.daimler.testdpc.common.preference.DpcPreference
-            android:key="reenable_status_bar"
-            android:title="@string/reenable_status_bar"
-            testdpc:minSdkVersion="M"
-            testdpc:user="notManagedProfile" />
-        <!-- custom constraint: validateAffiliatedUserAfterP -->
-        <!-- custom constraint: validateDeviceOwnerBeforeP -->
-        <com.daimler.testdpc.common.preference.DpcPreference
-            android:key="disable_keyguard"
-            android:title="@string/disable_keyguard"
-            testdpc:minSdkVersion="M"
-            testdpc:user="notManagedProfile" />
-        <!-- custom constraint: validateAffiliatedUserAfterP -->
-        <!-- custom constraint: validateDeviceOwnerBeforeP -->
-        <com.daimler.testdpc.common.preference.DpcPreference
-            android:key="reenable_keyguard"
-            android:title="@string/reenable_keyguard"
-            testdpc:minSdkVersion="M"
-            testdpc:user="notManagedProfile" />
-        <com.daimler.testdpc.common.preference.DpcPreference
-            android:key="start_kiosk_mode"
-            android:title="@string/start_kiosk_mode"
-            testdpc:admin="deviceOwner"
-            testdpc:minSdkVersion="M" />
-    </PreferenceCategory>
-
-    <PreferenceCategory android:title="@string/certificate_management_title">
-        <com.daimler.testdpc.common.preference.DpcPreference
-            android:key="install_key_certificate"
-            android:title="@string/install_key_certificate"
-            testdpc:minSdkVersion="L"
-            testdpc:admin="any"
-            testdpc:delegation="delegation-cert-install" />
-        <com.daimler.testdpc.common.preference.DpcPreference
-            android:key="remove_key_certificate"
-            android:title="@string/remove_key_certificate"
-            testdpc:minSdkVersion="N"
-            testdpc:admin="any" />
-        <com.daimler.testdpc.common.preference.DpcEditTextPreference
-            android:key="override_key_selection"
-            android:title="@string/key_override_alias"
-            testdpc:minSdkVersion="M"
-            testdpc:admin="any"
-            testdpc:delegation="delegation-cert-selection" />
-        <com.daimler.testdpc.common.preference.DpcPreference
-            android:key="generate_key_and_certificate"
-            android:title="@string/generate_key_and_certificate"
-            testdpc:minSdkVersion="P"
-            testdpc:admin="any" />
-        <com.daimler.testdpc.common.preference.DpcPreference
-            android:key="test_key_usability"
-            android:title="@string/test_key_usage"
-            testdpc:minSdkVersion="L"
-            testdpc:admin="any" />
-        <com.daimler.testdpc.common.preference.DpcPreference
-            android:key="install_ca_certificate"
-            android:title="@string/install_ca_certificate"
-            testdpc:minSdkVersion="L"
-            testdpc:delegation="delegation-cert-install" />
-        <com.daimler.testdpc.common.preference.DpcPreference
-            android:key="get_ca_certificates"
-            android:title="@string/get_ca_certificates"
-            testdpc:minSdkVersion="L"
-            testdpc:delegation="delegation-cert-install" />
-        <com.daimler.testdpc.common.preference.DpcPreference
-            android:key="remove_all_ca_certificates"
-            android:title="@string/remove_all_ca_certificates"
-            testdpc:minSdkVersion="L"
-            testdpc:delegation="delegation-cert-install" />
-    </PreferenceCategory>
+<!--    <PreferenceCategory android:title="@string/block_uninstallation_title">-->
+<!--        <com.daimler.testdpc.common.preference.DpcPreference-->
+<!--            android:key="block_uninstallation_by_pkg"-->
+<!--            android:title="@string/block_uninstallation_by_pkg"-->
+<!--            testdpc:minSdkVersion="L"-->
+<!--            testdpc:delegation="delegation-block-uninstall" />-->
+<!--        <com.daimler.testdpc.common.preference.DpcPreference-->
+<!--            android:key="block_uninstallation_list"-->
+<!--            android:title="@string/block_uninstallation_list"-->
+<!--            testdpc:minSdkVersion="L"-->
+<!--            testdpc:delegation="delegation-block-uninstall" />-->
+<!--    </PreferenceCategory>-->
 
 <!--    <PreferenceCategory android:title="@string/input_methods_title">-->
 <!--        <com.daimler.testdpc.common.preference.DpcPreference-->
@@ -487,63 +676,6 @@
 <!--            testdpc:minSdkVersion="O" />-->
 <!--    </PreferenceCategory>-->
 
-    <PreferenceCategory android:title="@string/networking_management_title">
-        <com.daimler.testdpc.common.preference.DpcPreference
-            android:key="network_stats"
-            android:title="@string/network_stats"
-            testdpc:admin="any"
-            testdpc:minSdkVersion="M" />
-        <com.daimler.testdpc.common.preference.DpcPreference
-            android:key="set_always_on_vpn"
-            android:title="@string/set_always_on_vpn"
-            testdpc:minSdkVersion="N" />
-        <com.daimler.testdpc.common.preference.DpcPreference
-            android:key="set_global_http_proxy"
-            android:title="@string/set_global_http_proxy"
-            testdpc:admin="deviceOwner"
-            testdpc:minSdkVersion="L" />
-        <com.daimler.testdpc.common.preference.DpcPreference
-            android:key="clear_global_http_proxy"
-            android:title="@string/clear_global_http_proxy"
-            testdpc:admin="deviceOwner"
-            testdpc:minSdkVersion="L" />
-        <com.daimler.testdpc.common.preference.DpcPreference
-            android:key="set_private_dns_mode"
-            android:title="@string/set_global_private_dns"
-            testdpc:admin="deviceOwner"
-            testdpc:minSdkVersion="Q" />
-    </PreferenceCategory>
-
-    <PreferenceCategory android:title="@string/permission_management">
-        <com.daimler.testdpc.common.preference.DpcPreference
-            android:key="set_permission_policy"
-            android:title="@string/set_default_permission_policy"
-            testdpc:minSdkVersion="M"
-            testdpc:delegation="delegation-permission-grant" />
-        <com.daimler.testdpc.common.preference.DpcPreference
-            android:key="manage_app_permissions"
-            android:title="@string/manage_app_permissions"
-            testdpc:minSdkVersion="M"
-            testdpc:delegation="delegation-permission-grant" />
-    </PreferenceCategory>
-
-    <PreferenceCategory android:title="@string/system_update_management">
-        <com.daimler.testdpc.common.preference.DpcPreference
-            android:key="system_update_policy"
-            android:title="@string/system_update_policy"
-            testdpc:minSdkVersion="M"
-            testdpc:admin="deviceOwner|orgOwnedProfileOwner" />
-        <com.daimler.testdpc.common.preference.DpcPreference
-            android:key="system_update_pending"
-            android:title="@string/system_update_pending"
-            testdpc:minSdkVersion="O" />
-        <com.daimler.testdpc.common.preference.DpcPreference
-            android:key="managed_system_updates"
-            android:title="@string/install_update"
-            testdpc:admin="deviceOwner|orgOwnedProfileOwner"
-            testdpc:minSdkVersion="Q" />
-    </PreferenceCategory>
-
 <!--    <PreferenceCategory android:title="@string/user_management">-->
 <!--        <com.daimler.testdpc.common.preference.DpcPreference-->
 <!--            android:key="create_managed_profile"-->
@@ -629,29 +761,6 @@
 <!--            testdpc:minSdkVersion="R" />-->
 <!--    </PreferenceCategory>-->
 
-    <PreferenceCategory android:title="@string/settings_management_title">
-        <com.daimler.testdpc.common.preference.DpcSwitchPreference
-            android:key="stay_on_while_plugged_in"
-            android:title="@string/stay_on_while_plugged_in"
-            testdpc:admin="deviceOwner"
-            testdpc:minSdkVersion="M" />
-        <!-- custom constraint: DISALLOW_INSTALL_UNKNOWN_SOURCES -->
-        <com.daimler.testdpc.common.preference.DpcSwitchPreference
-            android:key="install_nonmarket_apps"
-            android:title="@string/install_non_market_apps"
-            testdpc:minSdkVersion="L" />
-        <com.daimler.testdpc.common.preference.DpcSwitchPreference
-            android:key="set_location_enabled"
-            android:title="@string/set_location_enabled"
-            testdpc:admin="deviceOwner"
-            testdpc:minSdkVersion="R" />
-        <com.daimler.testdpc.common.preference.DpcSwitchPreference
-            android:key="set_location_mode"
-            android:title="@string/set_location_mode"
-            testdpc:admin="deviceOwner"
-            testdpc:minSdkVersion="L" />
-    </PreferenceCategory>
-
 <!--    <PreferenceCategory android:title="@string/support_messages">-->
 <!--        <com.daimler.testdpc.common.preference.DpcPreference-->
 <!--            android:key="set_short_support_message"-->
@@ -662,111 +771,6 @@
 <!--            android:title="@string/set_long_support_message"-->
 <!--            testdpc:minSdkVersion="N" />-->
 <!--    </PreferenceCategory>-->
-
-    <PreferenceCategory android:title="@string/device_owner_management">
-        <com.daimler.testdpc.common.preference.DpcEditTextPreference
-            android:key="set_device_organization_name"
-            android:title="@string/set_organization_name"
-            testdpc:minSdkVersion="O" />
-        <!-- custom constraint: validateDeviceOwnerBeforeO -->
-        <com.daimler.testdpc.common.preference.DpcSwitchPreference
-            android:key="set_auto_time_required"
-            android:title="@string/set_auto_time_required"
-            testdpc:user="notManagedProfile"
-            testdpc:minSdkVersion="L" />
-        <com.daimler.testdpc.common.preference.DpcSwitchPreference
-            android:key="set_auto_time"
-            android:title="@string/set_auto_time"
-            testdpc:admin="deviceOwner|orgOwnedProfileOwner"
-            testdpc:minSdkVersion="R" />
-        <com.daimler.testdpc.common.preference.DpcSwitchPreference
-            android:key="set_auto_time_zone"
-            android:title="@string/set_auto_time_zone"
-            testdpc:admin="deviceOwner|orgOwnedProfileOwner"
-            testdpc:minSdkVersion="R" />
-        <com.daimler.testdpc.common.preference.DpcSwitchPreference
-            android:key="enable_security_logging"
-            android:title="@string/enable_security_logging"
-            testdpc:admin="deviceOwner|orgOwnedProfileOwner"
-            testdpc:minSdkVersion="N" />
-        <!-- custom constraint: securityLoggingChecker -->
-        <com.daimler.testdpc.common.preference.DpcPreference
-            android:key="request_security_logs"
-            android:title="@string/request_security_logs"
-            testdpc:admin="deviceOwner|orgOwnedProfileOwner"
-            testdpc:minSdkVersion="N" />
-        <!-- custom constraint: securityLoggingChecker -->
-        <com.daimler.testdpc.common.preference.DpcPreference
-            android:key="request_pre_reboot_security_logs"
-            android:title="@string/request_pre_reboot_security_logs"
-            testdpc:admin="deviceOwner|orgOwnedProfileOwner"
-            testdpc:minSdkVersion="N" />
-        <com.daimler.testdpc.common.preference.DpcSwitchPreference
-            android:key="enable_network_logging"
-            android:title="@string/enable_network_logging"
-            testdpc:admin="deviceOwner"
-            testdpc:delegation="delegation-network-logging"
-            testdpc:minSdkVersion="O" />
-        <!-- custom constraint: networkLoggingEnabled -->
-        <com.daimler.testdpc.common.preference.DpcPreference
-            android:key="request_network_logs"
-            android:title="@string/request_network_logs"
-            testdpc:admin="deviceOwner"
-            testdpc:delegation="delegation-network-logging"
-            testdpc:minSdkVersion="O" />
-        <com.daimler.testdpc.common.preference.DpcPreference
-            android:key="request_bugreport"
-            android:title="@string/request_bugreport"
-            testdpc:admin="deviceOwner"
-            testdpc:minSdkVersion="N" />
-        <!-- custom constraint: validateDeviceOwnerBeforeQ -->
-        <com.daimler.testdpc.common.preference.DpcSwitchPreference
-            android:key="enable_backup_service"
-            android:title="@string/enable_backup_service"
-            testdpc:minSdkVersion="O" />
-        <com.daimler.testdpc.common.preference.DpcSwitchPreference
-            android:key="common_criteria_mode"
-            android:title="@string/common_criteria_mode"
-            testdpc:admin="deviceOwner|orgOwnedProfileOwner"
-            testdpc:minSdkVersion="R" />
-        <com.daimler.testdpc.common.preference.DpcPreference
-            android:key="wipe_data"
-            android:title="@string/wipe_data"
-            testdpc:minSdkVersion="L" />
-<!--        <com.daimler.testdpc.common.preference.DpcPreference-->
-<!--            android:key="remove_device_owner"-->
-<!--            android:title="@string/remove_device_owner"-->
-<!--            testdpc:admin="deviceOwner"-->
-<!--            testdpc:minSdkVersion="L" />-->
-        <com.daimler.testdpc.common.preference.DpcPreference
-            android:key="reboot"
-            android:title="@string/reboot"
-            testdpc:admin="deviceOwner"
-            testdpc:minSdkVersion="N" />
-        <com.daimler.testdpc.common.preference.DpcPreference
-            android:key="set_factory_reset_protection_policy"
-            android:title="@string/set_factory_reset_protection_policy"
-            testdpc:admin="deviceOwner|orgOwnedProfileOwner"
-            testdpc:minSdkVersion="R" />
-        <com.daimler.testdpc.common.preference.DpcPreference
-            android:key="factory_reset_org_owned_device"
-            android:title="@string/factory_reset_org_owned"
-            testdpc:admin="orgOwnedProfileOwner"
-            testdpc:minSdkVersion="R" />
-        <com.daimler.testdpc.common.preference.DpcSwitchPreference
-            android:key="suspend_personal_apps"
-            android:title="@string/suspend_personal_apps"
-            testdpc:admin="orgOwnedProfileOwner"
-            testdpc:minSdkVersion="R" />
-        <com.daimler.testdpc.common.preference.DpcEditTextPreference
-            android:defaultValue="0"
-            android:dialogTitle="@string/profile_max_time_off"
-            android:inputType="number"
-            android:key="profile_max_time_off"
-            android:title="@string/profile_max_time_off"
-            testdpc:admin="orgOwnedProfileOwner"
-            testdpc:minSdkVersion="R" />
-    </PreferenceCategory>
 
 <!--    <PreferenceCategory android:title="@string/transfer_ownership">-->
 <!--        <com.daimler.testdpc.common.preference.DpcPreference-->

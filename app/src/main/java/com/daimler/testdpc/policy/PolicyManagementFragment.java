@@ -777,9 +777,9 @@ public class PolicyManagementFragment extends BaseSearchablePolicyPreferenceFrag
 
         mLockdownAdminConfiguredNetworksPreference = (DpcSwitchPreference)
                 findPreference(WIFI_CONFIG_LOCKDOWN_ENABLE_KEY);
-        if (mLockdownAdminConfiguredNetworksPreference != null) {
-            mLockdownAdminConfiguredNetworksPreference.setOnPreferenceChangeListener(this);
-        }
+//        if (mLockdownAdminConfiguredNetworksPreference != null) {
+//            mLockdownAdminConfiguredNetworksPreference.setOnPreferenceChangeListener(this);
+//        }
 
         setOnPreferenceClickListener(MODIFY_WIFI_CONFIGURATION_KEY);
         setOnPreferenceClickListener(TRANSFER_OWNERSHIP_KEY);
